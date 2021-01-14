@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ProjectTest{
     public static void main(String[] args){
         Project comunitySquare = new Project();
@@ -17,5 +19,13 @@ public class ProjectTest{
         treeNursury.setCost(85000);
         System.out.println(campSupply.elevatorPitch());
         System.out.println(treeNursury.elevatorPitch());
+        Portfolio portfolio = new Portfolio();
+        portfolio.setPortfolioProject(comunitySquare);
+        portfolio.setPortfolioProject(deli);
+        portfolio.setPortfolioProject(treeNursury);
+        portfolio.setPortfolioProject(campSupply);
+        portfolio.setPortfolioProject(hardwareFeed);
+        System.out.println(portfolio.getPortfolio().toString());
+        System.out.println(portfolio.showPorfolio());
     }
 }
