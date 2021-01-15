@@ -1,7 +1,9 @@
 
 public class Gorilla extends Mammal {
+	private static int defaultEnergyLevel = 100;
 	
 	public Gorilla() {
+		this.energyLevel = defaultEnergyLevel;
 	}
 	public void throwSomething() {
 		energyLevel -= 5;
