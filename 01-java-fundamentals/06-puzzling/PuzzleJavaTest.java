@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class PuzzleJavaTest{
     public static void main(String[] args){
         PuzzleJava methods = new PuzzleJava();
