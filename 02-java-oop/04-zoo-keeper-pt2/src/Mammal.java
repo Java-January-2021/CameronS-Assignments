@@ -1,7 +1,7 @@
 
 public class Mammal {
 	protected int energyLevel;
-	private static int defaultEnergyLevel = 100;
+	private static int defaultEnergyLevel = 0;
 	
 	public Mammal(int eLev) {
 		this.setEnergyLevel(eLev);
