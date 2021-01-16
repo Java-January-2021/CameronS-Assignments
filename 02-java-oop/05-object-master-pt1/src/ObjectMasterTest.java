@@ -6,7 +6,6 @@ public class ObjectMasterTest {
 		Human fiddler = new Human();
 		wiskeyjack.attack(fiddler);
 		fiddler.displayHealth();
-
 	}
 
 }
