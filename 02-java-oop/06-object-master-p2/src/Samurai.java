@@ -3,9 +3,10 @@ public class Samurai extends Human{
 	private static int defHealth = 200;
 	private static int count = 0;
 
-	public Samurai() {
+	public Samurai(String name) {
+		this.name = name;
 		this.health = defHealth;
-		this.count += 1;
+		count += 1;
 	}
 	public void deathBlow(Human victim) {
 		victim.health = 0;
@@ -17,7 +18,12 @@ public class Samurai extends Human{
 	}
 	public static void howMany() {
 		System.out.println("Total Samurai: "+count);
-		//return count;
 	}
-
+	public void displayStats() {
+		int health = this.health;
+		int strength = this.strength;
+		int intelect = this.intelligence;
+		int stealth = this.stealth;
+		System.out.println(this.name+"'s Reamaining-> Health: "+health+" Strength: "+strength+" Intelect: "+intelect+" Stealth: "+stealth);
+	}
 }

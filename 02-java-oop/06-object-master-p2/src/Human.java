@@ -1,5 +1,6 @@
 
 public class Human {
+	protected String name;
 	protected int health;
 	protected int strength;
 	protected int intelligence;
@@ -38,12 +39,5 @@ public class Human {
 		System.out.println("Reamaining Stealth: "+stealth);
 		return stealth;
 	}
-	public void displayStats() {
-		int health = this.health;
-		int strength = this.strength;
-		int intelect = this.intelligence;
-		int stealth = this.stealth;
-		System.out.println("Reamaining-> Health: "+health+" Strength: "+strength+" Intelect: "+intelect+" Stealth: "+stealth);
-		//display stats with a name
-	}
+	
 }
