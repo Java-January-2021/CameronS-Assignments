@@ -1,6 +1,6 @@
 
 public class Samurai extends Human{
-	private static int defHealth = 200;
+	private int defHealth = 200;
 	private static int count = 0;
 
 	public Samurai(String name) {

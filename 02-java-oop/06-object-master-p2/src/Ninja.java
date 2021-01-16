@@ -1,6 +1,6 @@
 
 public class Ninja extends Human{
-	private static int defStealth = 10;
+	private int defStealth = 10;
 	private static int count = 0;
 
 	public Ninja(String name) {

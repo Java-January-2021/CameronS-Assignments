@@ -1,7 +1,7 @@
 
 public class Wizard extends Human{
-	private static int defIntelligence = 8;
-	private static int defHealth = 50;
+	private int defIntelligence = 8;
+	private int defHealth = 50;
 	private static int count = 0;
 
 	public Wizard(String name) {
