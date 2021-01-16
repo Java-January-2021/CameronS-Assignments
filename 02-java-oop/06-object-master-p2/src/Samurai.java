@@ -1,9 +1,11 @@
 
 public class Samurai extends Human{
 	private static int defHealth = 200;
+	private static int count = 0;
 
 	public Samurai() {
 		this.health = defHealth;
+		this.count += 1;
 	}
 	public void deathBlow(Human victim) {
 		victim.health = 0;
@@ -13,11 +15,9 @@ public class Samurai extends Human{
 	public void meditate() {
 		this.health = defHealth;
 	}
-	public int howMany() {
-		int count = 0;
-		//iterate through samurai instances
-		return count;
-		//returns the current number of Samurai.
+	public static void howMany() {
+		System.out.println("Total Samurai: "+count);
+		//return count;
 	}
 
 }

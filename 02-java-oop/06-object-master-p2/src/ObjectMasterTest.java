@@ -24,7 +24,7 @@ public class ObjectMasterTest {
 		tattersail.fireball(gesler);
 		tattersail.fireball(gesler);
 		tattersail.fireball(gesler);
-		//gesler.displayStats();
+		gesler.displayStats();
 		gesler.meditate();
 		//gesler.displayStats();
 		sorry.attack(icarium);
@@ -36,6 +36,10 @@ public class ObjectMasterTest {
 		//cotillion.displayStats();
 		//icarium.displayStats();
 		//fiddler.displayStats();
+		Samurai.howMany();
+		Ninja.howMany();
+		Wizard.howMany();
+		
 	}
 
 }
