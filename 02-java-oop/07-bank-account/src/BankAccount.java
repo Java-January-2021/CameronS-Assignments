@@ -25,17 +25,17 @@ public class BankAccount {
 		}
 		return randomNum;
 	}
-	public double displayAccountBalance() {
+	private double displayAccountBalance() {
 		double userTotal = (this.checkingBalance+this.savingsBalance);
 		return userTotal;
 	}
-	public double getCheckingBalance() {
+	private double getCheckingBalance() {
 		return this.checkingBalance;
 	}
-	public double getSavingsBalance() {
+	private double getSavingsBalance() {
 		return this.savingsBalance;
 	}
-	public String getID() {
+	private String getID() {
 		return this.accountNum;
 	}
 	public void deposit(int amount, String account) {
