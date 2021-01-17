@@ -14,6 +14,7 @@ public class BankAccountTest {
 		acct1.displayAcctInfo();
 		acct2.withdraw(30, "checking");
 		acct2.displayAcctInfo();
+		BankAccount.displayBankInfo();
 	}
 
 }

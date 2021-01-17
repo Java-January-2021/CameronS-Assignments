@@ -38,12 +38,21 @@ public class BankAccount {
 	private String getID() {
 		return this.accountNum;
 	}
+	
+	public static int getAccountCount() {
+		return accountCount;
+	}
+
+	public static double getTotalBalance() {
+		return totalBalance;
+	}
+
 	public void deposit(int amount, String account) {
 		if(account.equals("savings")) {
 			this.savingsBalance += amount;
 			System.out.println("Accout: "+getID()+" Deposited "+amount+" into: "+account);
 		}
-		if(account.equals("checking")) {
+		else if(account.equals("checking")) {
 			this.checkingBalance += amount;
 			System.out.println("Accout: "+getID()+" Deposited "+amount+" into: "+account);
 		}
@@ -55,13 +64,14 @@ public class BankAccount {
 			BankAccount.totalBalance -= amount;
 			System.out.println("Accout: "+getID()+" Withdrew "+amount+" From: "+account);
 		}
-		if(account.equals("checking")&& this.checkingBalance >= amount) {
+		else if(account.equals("checking")&& this.checkingBalance >= amount) {
 			this.savingsBalance -= amount;
 			BankAccount.totalBalance -= amount;
 			System.out.println("Accout: "+getID()+" Withdrew "+amount+" From: "+account);
 		}
 		else {
 			System.out.println("Insufficient funds.");
+			return;
 		}
 	}
 	public void displayAcctInfo() {
@@ -69,5 +79,9 @@ public class BankAccount {
 		System.out.println("Savings: "+getSavingsBalance());
 		System.out.println("Checking: "+getCheckingBalance());
 		System.out.println("Total Balance: "+displayAccountBalance());
+	}
+	public static void displayBankInfo() {
+		System.out.println("Total Acounts: "+getAccountCount());
+		System.out.println("Bank Assets: "+getTotalBalance());
 	}
 }
