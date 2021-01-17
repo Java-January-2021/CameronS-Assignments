@@ -61,10 +61,8 @@ public class BasicJava {
         return total;
     }
     public int[] squareValues(int[] input){
-        int temp = 0;
         for(int i = 0; i < input.length; i++){
-            temp = input[i]*input[i];
-            input[i] = temp;
+            input[i] = input[i]*input[i];
         }
         return input;
     }
