@@ -73,7 +73,7 @@ public class PuzzleJava{
         System.out.println("Max value:");
         System.out.println(Collections.max(listToSort));
     }
-    public String randomString(int max){
+    /* public String randomString(int max){
         ArrayList<Character> input = new ArrayList<Character>();
         Random random = new Random();
         ArrayList<Character> randCharList = new ArrayList<Character>();
@@ -98,8 +98,8 @@ public class PuzzleJava{
         }
         String finalStr = sb.toString();
         return finalStr;
-    }
-    public ArrayList<String> randomStringS(int strMax, int arrMax){
+    } */
+    /* public ArrayList<String> randomStringS(int strMax, int arrMax){
         ArrayList<String> listOfRandomStrings = new ArrayList<String>();
         for(int i = 0; i < arrMax; i++){
             Random random = new Random();
@@ -126,6 +126,34 @@ public class PuzzleJava{
             }
         String finalStr = sb.toString();
         listOfRandomStrings.add(finalStr);
+        }
+        return listOfRandomStrings;
+    } */
+    public String randomString(int max){
+        ArrayList<Character> alphabet = new ArrayList<Character>();
+        for(char i = 'a'; i <= 'z'; ++i){
+            alphabet.add(i);
+        }
+        String randomStr = "";
+        for(int i = 0; i < max; i++){
+            Random randint = new Random();
+            randomStr += alphabet.get(randint.nextInt(alphabet.size()));
+        }
+        return randomStr;
+    }
+    public ArrayList<String> randomStringS(int strMax, int arrMax){
+        ArrayList<Character> alphabet = new ArrayList<Character>();
+        for(char i = 'a'; i <= 'z';i++){
+            alphabet.add(i);
+        }
+        ArrayList<String> listOfRandomStrings = new ArrayList<String>();
+        for(int j = 0; j < arrMax; j++){
+            String randomStr = "";
+            for(int i = 0; i < strMax; i++){
+                Random randint = new Random();
+                randomStr += alphabet.get(randint.nextInt(alphabet.size()));
+            }
+            listOfRandomStrings.add(randomStr);
         }
         return listOfRandomStrings;
     }
