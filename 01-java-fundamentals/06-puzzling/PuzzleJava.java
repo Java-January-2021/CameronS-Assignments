@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.AbstractCollection;
 import java.util.stream.Collectors;
-
+//#1
 public class PuzzleJava{
     public ArrayList<Integer> sumMax(int[] input, ArrayList<Integer> maxVals, int max){
         int sum = 0;
@@ -17,6 +17,7 @@ public class PuzzleJava{
         System.out.println("Total: "+sum);
         return maxVals;
     }
+    //#2
     public ArrayList<String> mixNamesMax(String[] namesArray,ArrayList<String> namesList, ArrayList<String> largeNames, int charMax){
         for(int i = 0; i < namesArray.length; i++){
             namesList.add(namesArray[i]);
@@ -31,6 +32,7 @@ public class PuzzleJava{
         System.out.println("Shuffled List: "+namesList);
         return largeNames;
     }
+    //#3
     public ArrayList<Character> alphabetSoup(ArrayList<Character> input){
         for(char alph = 'a'; alph <= 'z'; ++alph){
             input.add(alph);
@@ -49,6 +51,7 @@ public class PuzzleJava{
         }
         return input;
     }
+    //#4
     public ArrayList<Integer> randomList(ArrayList<Integer> input){
         for(int i = 55; i <= 100; i++){
             input.add(i);
@@ -61,6 +64,7 @@ public class PuzzleJava{
         }
         return randomTen;
     }
+    //#5
     public void sortedList(ArrayList<Integer> input){
         ArrayList<Integer> listToSort = randomList(input);
         System.out.println("Ten Random #'s between 55-100 in an List: ");
@@ -73,6 +77,7 @@ public class PuzzleJava{
         System.out.println("Max value:");
         System.out.println(Collections.max(listToSort));
     }
+    //#6
     /* public String randomString(int max){
         ArrayList<Character> input = new ArrayList<Character>();
         Random random = new Random();
@@ -99,6 +104,7 @@ public class PuzzleJava{
         String finalStr = sb.toString();
         return finalStr;
     } */
+    //#7
     /* public ArrayList<String> randomStringS(int strMax, int arrMax){
         ArrayList<String> listOfRandomStrings = new ArrayList<String>();
         for(int i = 0; i < arrMax; i++){
@@ -129,6 +135,7 @@ public class PuzzleJava{
         }
         return listOfRandomStrings;
     } */
+    //#7
     public String randomString(int max){
         ArrayList<Character> alphabet = new ArrayList<Character>();
         for(char i = 'a'; i <= 'z'; ++i){
@@ -141,6 +148,7 @@ public class PuzzleJava{
         }
         return randomStr;
     }
+    //#7
     public ArrayList<String> randomStringS(int strMax, int arrMax){
         ArrayList<Character> alphabet = new ArrayList<Character>();
         for(char i = 'a'; i <= 'z';i++){
