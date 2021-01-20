@@ -22,15 +22,17 @@ public class DLLTest {
         dll.pushEnd(n5);
         dll.pushEnd(n6);
         dll.pushFront(n7);
-        dll.deleteEnd();
-        dll.deleteFront();
-        dll.deleteNodeValue(10);
+        //System.out.print(dll.popFront());
+        //dll.popFront();
+        //dll.popNodeValue(10);
+        //dll.printValuesForward();
+        dll.pushBeforeNode(n8, n3);
+        dll.pushBeforeNode(n9, n8);
+        dll.pushBeforeNode(n10, n4);
+        dll.size();
+        //dll.printValuesReverse();
+        //System.out.println(dll.containsValue(20));
         dll.printValuesForward();
-        dll.insertBeforeNode(n8, n3);
-        dll.insertBeforeNode(n9, n8);
-        dll.insertBeforeNode(n10, n4);
-        dll.printValuesForward();
-        dll.printValuesReverse();
 	}
 
 }
