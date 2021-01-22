@@ -1,19 +1,15 @@
+import java.util.ArrayList;
 
-public abstract class AbstractPokemon extends Pokemon implements Pokemoninterface{
-
-	public AbstractPokemon(String name, String type, int health) {
-		super(name, type, health);
-	}
-
-	@Override
+public abstract class AbstractPokemon implements Pokemoninterface{
+	protected ArrayList<Pokemon> pokeList = new ArrayList<Pokemon>();
+	
+	
 	public Pokemon createPokemon(String name, String type, int health) {
-		return this.createPokemon(name, type, health);
+		Pokemon pk = new Pokemon(name, type, health);
+		this.pokeList.add(pk);
+		return pk;
 	}
 
-	@Override
-	public String pokemonInfo(Pokemon Pokemon) {
-		return null;
-	}
-
+	public abstract String pokemonInfo(Pokemon Pokemon);
 	
 }
