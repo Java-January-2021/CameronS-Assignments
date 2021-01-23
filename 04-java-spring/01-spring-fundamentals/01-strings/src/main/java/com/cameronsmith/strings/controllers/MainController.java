@@ -16,8 +16,4 @@ public class MainController {
 	public String random() {
         return "Spring Boot is great! So easy to just respond with strings!";
 	}
-	/*@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String index() {
-		return "index.jsp";
-	}*/
 }
