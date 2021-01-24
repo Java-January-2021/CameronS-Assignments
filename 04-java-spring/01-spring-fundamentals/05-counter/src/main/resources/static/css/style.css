@@ -1,0 +1,33 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	padding-top: 20px;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+}
+h1{
+	text-align: center;
+	margin-top: 75px;
+}
+.pageLink{
+	color: yellow;
+	text-decoration: underline;
+	display: inline-block;
+}
+#divLink{
+	text-align: center;
+}
+p{
+	display: inline-block;
+	margin: 0px 10px
+}
+#countLink{
+	color: yellow;
+	text-decoration: underline;
+	display: block;
+	text-align: center;
+}
