@@ -9,15 +9,15 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<div id=wrapper>
+<div id=wrapper>
 	<a href="/" id=pageLink>Go Back</a>
-		<div id=formInfo>
-            <h2>Submitted Info</h2>
-            <p class='P'>Name:<c:out value="${nameInput}">nameInput</c:out></p>
-            <p class='P'>Dojo Location:<c:out value="${locationInput}">locationInput</c:out></p>
-            <p class='P'>Favorite Language:<c:out value="${languageInput}">languageInput</c:out></p>
-            <p class='P'>Comment:<c:out value="${commentInput}">commentInput</c:out></p>
-        </div>
+	<div id=formInfo>
+		<h2>Submitted Info</h2>
+		<p>Name:	<span><c:out value="${username}"/></span></p>
+		<p>Dojo Location:	<span><c:out value="${location}"/></span></p>
+		<p>Favorite Language:	<span><c:out value="${language}"/></span></p>
+		<p>Comment:</p><textarea id=commentOut  rows=4 cols=23 ><c:out value="${comment}"/></textarea>
 	</div>
+</div>
 </body>
 </html>

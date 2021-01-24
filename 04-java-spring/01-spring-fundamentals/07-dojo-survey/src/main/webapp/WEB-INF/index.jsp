@@ -12,27 +12,27 @@
 	<div id=wrapper>
 		<h1>Dojo Survey</h1>
 		<div id=formInput>
-			<form action="/result" method="post">
+			<form action="/submit" method="post">
 				<p>Your Name: <input id=nameInput name="username" type="text"></p>
 	            <p>Dojo Location: <select name="locationInput" id="locationInput">
-	                <option value="san jose">San Jose</option>
-	                <option value="tulsa">Tulsa</option>
-	                <option value="seattle">Seattle</option>
-	                <option value="oakland">Oakland</option>
-	                <option value="boise">Boise</option>
-	                <option value="chicago">Chicago</option>
+	                <option value="San Jose">San Jose</option>
+	                <option value="Tulsa">Tulsa</option>
+	                <option value="Seattle">Seattle</option>
+	                <option value="Oakland">Oakland</option>
+	                <option value="Burbank">Burbank</option>
+	                <option value="Chicago">Chicago</option>
 	            </select></p>
 	            <p>Favorite Language: <select name="languageInput" id="languageInput">
-	                <option value="java">Java</option>
-	                <option value="ruby">Ruby</option>
-	                <option value="c#">C#</option>
-	                <option value="python">Python</option>
-	                <option value="javascript">JavaScript</option>
-	                <option value="html">HTML</option>
-	                <option value="css">CSS</option>
+	                <option value="Java">Java</option>
+	                <option value="Ruby">Ruby</option>
+	                <option value="Express">Express</option>
+	                <option value="Python">Python</option>
+	                <option value="JavaScript">JavaScript</option>
+	                <option value="HTML">HTML</option>
+	                <option value="CSS">CSS</option>
 	            </select></p>
 	            <p id=comment>Comment (Optional): </p>
-	            <textarea id=commentInput name="commentInput" rows=10 cols=40 ></textarea>
+	            <textarea id=commentInput name="commentInput" rows=7 cols=40 ></textarea>
 	            <button id=button>Submit</button>
         	</form>	
 		</div>

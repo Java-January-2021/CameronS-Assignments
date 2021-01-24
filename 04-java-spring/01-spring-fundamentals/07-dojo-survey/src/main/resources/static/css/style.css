@@ -25,9 +25,10 @@ h1{
 	border-style: solid;
 }
 #formInfo{
+	width: 220px;
 	display: inline-block;
 	padding: 9px 25px;
-	margin: 140.845px 0px 0px 380.345px;
+	margin: 115.845px 0px 0px 365.345px;
 	border-width: 3px;
 	border-color: black;
 	border-radius: 10px;
@@ -63,19 +64,9 @@ h1{
 	display: block;
 	margin: 25px 0px 0px 800px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#commentOut{
+	border-radius: 10px;
+}
+#javaFun{
+	color: yellow;
+}
