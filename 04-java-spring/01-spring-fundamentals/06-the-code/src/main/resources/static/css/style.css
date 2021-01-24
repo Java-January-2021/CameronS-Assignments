@@ -1,0 +1,42 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+	padding-top: 5px;
+}
+h1{
+	margin-top: 150px;
+	color: red;
+	text-align: center;
+}
+h2{
+	text-align: center;
+}
+#inputForm{
+	display: block;
+	text-align: center;
+}
+#list{
+	display: inline-block;
+	margin: 190px 0px 0px 435.53px;
+	font-weight: bold;
+	font-size: large;
+}
+li{
+	margin-top: 5px;
+}
+#pageLink{
+	color: yellow;
+	text-decoration: underline;
+	display: inline-block;
+	margin: 20px 0px 0px 750px;
+}
+#error{
+	color: red;
+	font-weight: bold;
+}
