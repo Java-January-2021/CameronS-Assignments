@@ -1,0 +1,40 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	padding-top: 5px;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+}
+h1{
+	display: inline-block;
+	text-align: center;
+	text-decoration: underline;
+	color: white;
+	margin: 50px 200px 0px 100px;
+}
+#lessonPlaceholder{
+	border-color: black;
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 10px;
+	color: white;
+	margin: 100px;
+	padding: 15px 10px;
+	width: 774;
+	height: 160;
+}
+.navButton{
+	display: inline-block;
+	display: inline-block;
+	text-decoration: underline;
+	color: yellow;
+	font-weight: bold;
+	margin: 0px 10px;
+}
+.pageLink{
+	color: yellow;
+}
