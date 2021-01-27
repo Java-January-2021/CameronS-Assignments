@@ -13,9 +13,8 @@ public class MasterController {
 	public Integer getCount(HttpSession session){
         if(session.getAttribute("count") == null) {
             session.setAttribute("count", 0);
-            currentCount = (Integer) session.getAttribute("count");
         }
-		return currentCount;
+         return currentCount = (Integer) session.getAttribute("count");
     }
 	
 	public void setCount(HttpSession session, Integer currentCount) {
@@ -24,7 +23,7 @@ public class MasterController {
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index(HttpSession session) {
-		int count = (int) session.getAttribute("count");
+		Integer count = getCount(session);
 		count +=1;
 		setCount(session, count);
 		return "index.jsp";
@@ -38,12 +37,12 @@ public class MasterController {
     }
 	@RequestMapping(value="/reset", method=RequestMethod.GET)
 	public String reset(HttpSession session) {
-		setCount(session, 0);
+		session.invalidate();
 		return "redirect:/counter";
 	}
 	@RequestMapping(value="/twice", method=RequestMethod.GET)
 	public String index2(HttpSession session) {
-		int count = (int) session.getAttribute("count");
+		Integer count = (Integer) session.getAttribute("count");
 		count +=2;
 		setCount(session, count);
 		return "index2.jsp";
