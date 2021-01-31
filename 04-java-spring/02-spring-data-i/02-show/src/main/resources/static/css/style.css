@@ -1,0 +1,38 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	padding-top: 5px;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+}
+h1{
+	text-align: center;
+	text-decoration: underline;
+	color: white;
+	margin-top: 50px;
+}
+p{
+	text-align: center;
+}
+#button{
+	margin-left: 470px;
+}
+#infoLink{
+	color: yellow;
+}
+#pageLink{
+	display: inline-block;
+	color: yellow;
+	margin-left: 470px;
+	margin-top: 20px;
+}
+#booksTable{
+	padding: 0px 20px;
+}
+.bookDisplay{
+	text-align: center;
+}
