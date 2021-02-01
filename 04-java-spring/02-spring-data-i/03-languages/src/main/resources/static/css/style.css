@@ -1,0 +1,52 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1200px;
+	height: fit-content;
+	margin: 0px auto;
+	padding: 5px 0px 20px 0px;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+}
+h1{
+	text-align: center;
+	text-decoration: underline;
+	color: black;
+	margin-top: 20px;
+}
+h2{
+	display: block;
+	text-align: center;
+	color: black;
+}
+#langDisplay{
+	display: inline-block;
+	margin-left: 100px;
+	vertical-align: top;
+}
+#inputForm{
+	margin-left: 100px;
+	display: inline-block;
+	vertical-align: top;
+}
+#button{
+	margin-left: 100px
+}
+td{
+	padding: 2px 15px;
+}
+thead{
+	color: black;
+}
+.validation{
+	color: yellow;
+}
+#nameLink{
+	color: yellow;
+}
+#pageLink{
+	display: inline-block;
+	margin: 20px 0px 10px 850px;
+	color: yellow;
+}
