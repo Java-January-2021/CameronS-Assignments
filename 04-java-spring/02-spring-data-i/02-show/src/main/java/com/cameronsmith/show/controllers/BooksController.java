@@ -56,11 +56,13 @@ public class BooksController {
         }
     }
     @PostMapping("/edit/{id}")
-    public String updateBook(@PathVariable("id") Long id, @Valid @ModelAttribute("book") Book book, BindingResult result) {
+    public String updateBook(@PathVariable("id") Long id, Model viewmodel, @Valid @ModelAttribute("book") Book bookToUpdate, BindingResult result) {
+    	Book book = bService.individualBook(id);
         if (result.hasErrors()) {
+        	viewmodel.addAttribute("book", book);
             return "edit.jsp";
         }else{
-            this.bService.updateBook(id, book);
+            this.bService.updateBook(id, bookToUpdate);
             return "redirect:/books";
         }
     }
