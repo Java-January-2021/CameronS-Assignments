@@ -1,0 +1,40 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: fit-content;
+	margin: 0px auto;
+	padding: 25px 0px 25px 0px;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+}
+#pageLink{
+	color: yellow;
+	font-size: larger;
+	margin: 15px 0px 15px 100px;
+}
+h1{
+	text-align: center;
+	text-decoration: underline;
+	margin-top: 15px;
+	color: black;
+}
+.link{
+	color: yellow;
+}
+#songDisplay{
+	margin: 20px 0px 0px 250px;
+	border: black solid 2px;
+	padding: 10px;
+}
+td{
+	padding: 5px;
+}
+#inputForm{
+	display: inline-block;
+	margin: 15px 0px 15px 300px;
+}
+#formInput{
+	display: inline-block;
+}
