@@ -34,4 +34,7 @@ public class SongService {
 	public void deleteById(Long id) {
 		this.sRepo.deleteById(id);
 	}
+	public List<Song> topTen(){
+		return this.sRepo.findTop10ByOrderByRatingDesc();
+	}
 }

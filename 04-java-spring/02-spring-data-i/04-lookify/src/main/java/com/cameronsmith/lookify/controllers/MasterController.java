@@ -61,8 +61,11 @@ public class MasterController {
 		viewModel.addAttribute("artist", artist);
 		return "showArtist.jsp";
 	}
-	@GetMapping("/search/topTen")
-	public String topTen() {
+	@GetMapping("/topTen")
+	public String topTen(Model viewModel) {
+		List<Song> topTenList = sService.topTen();
+		System.out.println(topTenList);
+		viewModel.addAttribute("songs", sService.topTen());
 		return "topTen.jsp";
 	}
 }

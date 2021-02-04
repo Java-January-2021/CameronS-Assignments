@@ -12,7 +12,7 @@
 <body>
 	<div id=wrapper>
 	<a id="pageLink" href="/songs/new">Add New</a>
-	<a id="pageLink" href="/search/topTen">Top Songs</a>
+	<a id="pageLink" href="/topTen">Top Songs</a>
 	<div id="inputForm">
 	<form action="/search" method="post">
 	<input type="text" name="artist">
