@@ -1,0 +1,27 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	padding-top: 25px;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+}
+h1{
+	text-align: center;
+	text-decoration: underline;
+	color: black;
+	margin-top: 50px;
+}
+#addLicenseLink{
+	display: inline-block;
+	color: yellow;
+	margin: 0px 10px 0px 455.9685px;
+}
+#addPersonLink{
+	display: inline-block;
+	color: yellow;
+	margin: 0px 0px 0px 150px;
+}

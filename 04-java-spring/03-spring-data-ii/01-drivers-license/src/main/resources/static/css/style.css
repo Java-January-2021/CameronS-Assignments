@@ -1,0 +1,24 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	padding-top: 15px;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+}
+h1{
+	text-align: center;
+	text-decoration: underline;
+	color: white;
+	margin-top: 100px;
+}
+#entryLink{
+	display: inline-block;
+	margin: 50px 0px 0px 383.125px;
+	text-align: center;
+	color: yellow;
+	font-size:larger;
+}
