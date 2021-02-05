@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity 
@@ -24,14 +25,10 @@ public class License {
 	@Column(updatable=false)
 	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
 	private Date createdAt;
-	@Column
 	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
 	private Date updatedAt;
-	@Column
-	private Long number;
-	@Column
+//	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	private Date expirationDate;
-	@Column
 	private String state;
 	@PrePersist
 	protected void onCreate(){
@@ -56,9 +53,6 @@ public class License {
 	public Date getUpdatedAt() {
 		return this.updatedAt;
 	}
-	public Long getNumber() {
-		return this.number;
-	}
 	public Date getExpirationDate() {
 		return this.expirationDate;
 	}
@@ -76,9 +70,6 @@ public class License {
 	}
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-	public void setNumber(Long number) {
-		this.number = number;
 	}
 	public void setExpirationDate(Date expirationDate) {
 		this.expirationDate = expirationDate;

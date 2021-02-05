@@ -18,10 +18,22 @@ h1{
 #addLicenseLink{
 	display: inline-block;
 	color: yellow;
-	margin: 0px 10px 0px 455.9685px;
+	margin: 0px 10px 0px 31.8685px;
 }
 #addPersonLink{
 	display: inline-block;
 	color: yellow;
 	margin: 0px 0px 0px 150px;
+}
+#displayDiv{
+	display: inline-block;
+	margin: 30px 0px 0px 424.1px;
+}
+.displayHead{
+	color: black;
+	display: inline-block;
+	margin: 10px 0px;
+}
+.displayInfo{
+	margin: 5px 0px;
 }

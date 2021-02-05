@@ -1,5 +1,7 @@
 package com.cameronsmith.driverslicense.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -22,6 +24,7 @@ import com.cameronsmith.driverslicense.services.PersonService;
 public class MainController {
 	@Autowired
 	private PersonService pService;
+	@Autowired
 	private LicenseService lService;
 	@GetMapping("/")
 	public String index() {
@@ -33,7 +36,7 @@ public class MainController {
 	}
 	@PostMapping("/person/add")
     public String createObject(@Valid @ModelAttribute("person")Person person, BindingResult result) {
-    		if (result.hasErrors()) {
+		if (result.hasErrors()) {
             return "newPerson.jsp";
         } 
         this.pService.createEntry(person);
@@ -45,10 +48,30 @@ public class MainController {
 		viewModel.addAttribute("allPeople", allPeople);
 		return "newLicense.jsp";
 	}
+	@PostMapping("/license/add")
+	public String createObject(@Valid @ModelAttribute("license")License license, BindingResult result) {
+		if (result.hasErrors()) {
+            return "newLicense.jsp";
+        }
+		this.lService.createLicense(license);
+		return "redirect:/license/new";
+	}
 	@GetMapping("/person/{id}")
 	public String showInfo( @PathVariable("id")Long id, Model viewModel) {
-		viewModel.addAttribute("person", pService.getById(id));
-//		viewModel.addAttribute("license", lService.getById(id));
-		return "showInfo.jsp";
+		Person person = pService.getById(id);
+		License license = person.getLicense();
+		if( license != null) {			
+			Date expdate = license.getExpirationDate();
+			String pattern = "yyyy-MM-dd";
+			SimpleDateFormat dateOnly = new SimpleDateFormat(pattern);
+			String dateInput = dateOnly.format(expdate);
+			viewModel.addAttribute("person", person);
+			viewModel.addAttribute("license", license);
+			viewModel.addAttribute("expDate", dateInput);
+			return "showInfo.jsp";
+		}else {
+			viewModel.addAttribute("person", person);
+			return "showInfo.jsp";
+		}
 	}
 }
