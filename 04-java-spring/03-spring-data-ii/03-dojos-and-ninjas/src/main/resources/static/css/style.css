@@ -1,0 +1,61 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	padding-top: 5px;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+}
+#title{
+	text-align: center;
+	text-decoration: underline;
+	color: black;
+	margin-top: 180px;
+}
+#title2{
+	text-align: center;
+	text-decoration: underline;
+	color: black;
+	margin-top: 50px;
+}
+#subTitle{
+	text-align: center;
+}
+.pageLink{
+	display: block;
+	color: yellow;
+	text-align: center;
+	margin: 10px 0px;
+}
+#pageLink{
+	display: block;
+	color: yellow;
+	margin: 20px 0px 0px 800px;
+}
+#inputForm{
+	display: inline-block;
+	margin: 10px 0px 0px 390px;
+}
+#searchHead{
+	text-align: center;
+}
+#button{
+	margin: 20px 0px 0px 140px;
+}
+.formDiv{
+	margin: 10px 5px;
+}
+#ninjaDisplay{
+	display: inline-block;
+	margin: 20px 0px 0px 383.5px;
+}
+td{
+	padding: 5px;
+}
+.tableHead{
+	padding: 5px;
+	color: black;
+}
