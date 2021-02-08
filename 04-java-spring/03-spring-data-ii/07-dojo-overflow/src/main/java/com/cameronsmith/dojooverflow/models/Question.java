@@ -22,6 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="questions")
 public class Question {
+	//Attributes >>>>>>>>>>>>>>>>>>>
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -48,9 +49,18 @@ public class Question {
     private List<Tag> tags;
 	@OneToMany(mappedBy="question", fetch = FetchType.LAZY)
     private List<Answer> answers;
+	//Constructors >>>>>>>>>>>>>>>>>>
 	public Question() {
 
 	}
+	public Question(String question) {
+		this.question = question;
+	}
+	public Question(String question, List<Tag> tags) {
+		this.question = question;
+		this.tags = tags;
+	}
+	//Getters and Setters >>>>>>>>>>>>
 	public Long getId() {
 		return this.id;
 	}

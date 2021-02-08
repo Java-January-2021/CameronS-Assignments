@@ -19,6 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="answers")
 public class Answer {
+	//Attributes >>>>>>>>>>>>>>>>>>>>
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -39,9 +40,18 @@ public class Answer {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="question_id")
     private Question question;
+	//Constructors >>>>>>>>>>>>>>>>>>>>
 	public Answer() {
 		
 	}
+	public Answer(String answer) {
+		this.answer = answer;
+	}
+	public Answer(String answer, Question question) {
+		this.answer = answer;
+		this.question = question;
+	}
+	//Getters and Setters >>>>>>>>>>>>>
 	public Long getId() {
 		return this.id;
 	}

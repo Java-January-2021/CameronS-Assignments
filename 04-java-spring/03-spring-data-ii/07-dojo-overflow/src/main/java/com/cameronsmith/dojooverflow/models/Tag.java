@@ -21,6 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="tags")
 public class Tag {
+	//Attributes >>>>>>>>>>>>>>>>>>>>>>
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -45,9 +46,18 @@ public class Tag {
         inverseJoinColumns = @JoinColumn(name = "question_id")
     )
     private List<Question> questions;
+	//Constructors >>>>>>>>>>>>>>>>>>>>>
 	public Tag() {
 		
 	}
+	public Tag(String subject) {
+		this.subject = subject;
+	}
+	public Tag(String subject, List<Question> questions) {
+		this.subject = subject;
+		this.questions = questions;
+	}
+	//Getters and Setters >>>>>>>>>>>>>>
 	public Long getId() {
 		return this.id;
 	}
