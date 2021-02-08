@@ -84,5 +84,10 @@ public class MasterService {
 	public void deleteProductById(Long id) {
 		this.pRepo.deleteById(id);
 	}
-	
+	public List<Category> findCategoriesNotInProduct(Product product) {
+		return cRepo.findByProductsNotContains(product);
+	}
+	public List<Product> findProductsNotInCategory(Category category) {
+		return pRepo.findByCategoriesNotContains(category);
+	}
 }

@@ -43,10 +43,24 @@ public class MasterController {
 		Category thisCategory = mService.getCategoryById(id);
 		List<Product> thisCategoriesProducts = thisCategory.getProducts();
 		List<Product> allProducts = mService.getAllProduct();
+		List<Product> others = mService.findProductsNotInCategory(thisCategory);
 		viewModel.addAttribute("products", thisCategoriesProducts);
 		viewModel.addAttribute("allProducts", allProducts);
 		viewModel.addAttribute("category", thisCategory);
+		viewModel.addAttribute("notInCategories", others);
 		return "categoryInfo.jsp";
+	}
+	@GetMapping("/product/{id}")
+	public String productInfo(@PathVariable("id")Long id, Model viewModel) {
+		Product thisProduct = mService.getProductById(id);
+		List<Category> thisProductsCategories = thisProduct.getCategories();
+		List<Category> allCategory = mService.getAllCategory();
+		List<Category> others = mService.findCategoriesNotInProduct(thisProduct);
+		viewModel.addAttribute("allCategory", allCategory);
+		viewModel.addAttribute("categories", thisProductsCategories);
+		viewModel.addAttribute("product", thisProduct);
+		viewModel.addAttribute("notInCategories", others);
+		return "productInfo.jsp";
 	}
 	@PostMapping("/category/{id}")
 	public String addProductToCategory(@RequestParam("product")Long productId,@PathVariable("id")Long id) {
@@ -54,16 +68,6 @@ public class MasterController {
 		Category thisCategory = this.mService.getCategoryById(id);
 		this.mService.addProductToCategory(productToAdd, thisCategory);
 		return "redirect:/category/{id}";
-	}
-	@GetMapping("/product/{id}")
-	public String productInfo(@PathVariable("id")Long id, Model viewModel) {
-		Product thisProduct = mService.getProductById(id);
-		List<Category> thisProductsCategories = thisProduct.getCategories();
-		List<Category> allCategory = mService.getAllCategory();
-		viewModel.addAttribute("allCategory", allCategory);
-		viewModel.addAttribute("categories", thisProductsCategories);
-		viewModel.addAttribute("product", thisProduct);
-		return "productInfo.jsp";
 	}
 	@PostMapping("/product/{id}")
 	public String addCategoryToProduct(@RequestParam("category")Long categoryId, @PathVariable("id")Long id) {

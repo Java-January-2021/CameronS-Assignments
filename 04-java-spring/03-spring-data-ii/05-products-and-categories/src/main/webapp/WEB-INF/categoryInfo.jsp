@@ -37,7 +37,7 @@
 			<form id="inputForm" action="/category/${category.id}" method="post">
 				<div class="formDiv">
 				<select class="formInput" name="product">
-					<c:forEach items="${allProducts}" var="product">
+					<c:forEach items="${notInCategories}" var="product">
 						<option value="${product.id}">${product.name}</option>
 					</c:forEach>
 				</select>
