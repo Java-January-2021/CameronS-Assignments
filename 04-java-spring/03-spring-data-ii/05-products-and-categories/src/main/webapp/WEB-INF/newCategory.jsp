@@ -21,6 +21,7 @@
 	    </div>
 	    <input id="button" type="submit" value="Submit"/>
 	</form:form>
+	<a class="indexLink" href="/categories/show">Show All Categories</a>
 	</div>
 </body>
 </html>

@@ -12,8 +12,24 @@
 <body>
 	<div id=wrapper>
 	<a id="indexLink" href="/">Home</a>
-		<h1 id="head">Categories</h1>
+		<h1 id="head">All Categories</h1>
 		<a class="indexLink" href="/categories/new">Create a Category</a>
+		<table id="categoryDisplay">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${categories}" var="category">
+			<tr>
+				<td><a class="link" href="/category/${category.id}">${category.name}</a></td>
+				<td><a class="link" href="/category/${category.id}/delete">Delete</a></td>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 	</div>
 </body>
 </html>

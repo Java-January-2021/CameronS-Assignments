@@ -31,6 +31,7 @@
 	    </div>
 	    <input id="button" type="submit" value="Submit"/>
 	</form:form>
+	<a class="indexLink" href="/products/show">Show All Products</a>
 	</div>
 </body>
 </html>

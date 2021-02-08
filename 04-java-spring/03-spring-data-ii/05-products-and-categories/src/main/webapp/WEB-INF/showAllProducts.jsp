@@ -12,8 +12,28 @@
 <body>
 	<div id=wrapper>
 	<a id="indexLink" href="/">Home</a>
-		<h1 id="head">Products</h1>
+		<h1 id="head">All Products</h1>
 		<a class="indexLink" href="/products/new">Create A Product</a>
+		<table id="productDisplay">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${products}" var="product">
+			<tr>
+				<td><a class="link" href="/product/${product.id}">${product.name}</a></td>
+				<td>${product.description}</td>
+				<td>${product.price}</td>
+				<td><a class="link" href="/product/${product.id}/delete">Delete</a></td>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 	</div>
 </body>
 </html>

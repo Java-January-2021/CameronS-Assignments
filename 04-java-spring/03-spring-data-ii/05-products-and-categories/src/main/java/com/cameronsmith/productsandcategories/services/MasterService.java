@@ -16,8 +16,23 @@ public class MasterService {
 	private CategoryRepo cRepo;
 	@Autowired
 	private ProductRepo pRepo;
+	
 	public List<Category> getAllCategory(){
 		return this.cRepo.findAll();
+	}
+	public List<Product> getCategoryProducts(){
+		return this.getCategoryProducts();
+	}
+//	Add Product to Category
+	public void addProductToCategory(Product product, Category category) {
+		List<Product> products = category.getProducts();
+		products.add(product);
+		this.cRepo.save(category);
+	}
+	public void removeProductFromCategory(Product product, Category category) {
+		List<Product> products = category.getProducts();
+		products.remove(product);
+		this.cRepo.save(category);
 	}
 	public Category createCategory(Category newEntry) {
 		return this.cRepo.save(newEntry);
@@ -35,8 +50,23 @@ public class MasterService {
 	public void deleteCategoryById(Long id) {
 		this.cRepo.deleteById(id);
 	}
+	
+	public List<Category> getProductCategories(){
+		return this.getProductCategories();
+	}
 	public List<Product> getAllProduct(){
 		return this.pRepo.findAll();
+	}
+//	Add Category to Product
+	public void addCategoryToProduct(Category category, Product product) {
+		List<Category> categories = product.getCategories();
+		categories.add(category);
+		this.pRepo.save(product);
+	}
+	public void removeCategoryFromProduct(Category category, Product product) {
+		List<Category> categories = product.getCategories();
+		categories.remove(category);
+		this.pRepo.save(product);
 	}
 	public Product createProduct(Product newEntry) {
 		return this.pRepo.save(newEntry);
@@ -54,4 +84,5 @@ public class MasterService {
 	public void deleteProductById(Long id) {
 		this.pRepo.deleteById(id);
 	}
+	
 }
