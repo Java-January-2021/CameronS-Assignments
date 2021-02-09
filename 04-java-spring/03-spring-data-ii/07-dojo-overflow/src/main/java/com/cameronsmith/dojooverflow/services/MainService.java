@@ -1,5 +1,6 @@
 package com.cameronsmith.dojooverflow.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -135,6 +136,10 @@ public class MainService {
 	public Tag getTagById(Long id) {
 		return this.tRepo.findById(id).orElse(null);
 	}
+	public Tag getTagByContains(String input) {
+		Tag thisTag = this.tRepo.findBySubjectContaining(input);
+		return thisTag;
+	}
 	//Read Relationship Tables
 	public List<Question> getTagQuestions(){
 		return this.getTagQuestions();
@@ -149,4 +154,32 @@ public class MainService {
 		questions.remove(question);
 		this.tRepo.save(tag);
 	}
+	//Split Tag String from form Input
+	//Save new tags and output list of tag objects? or strings of tags
+	public ArrayList<Tag> splitTagString(String tagsInput){
+		//create an array list of strings for split tagInput string output
+		ArrayList<Tag> tagsOutput = new ArrayList<Tag>();
+		//split taginput string at each comma
+		for(String i: tagsInput.split(", ")) {
+			System.out.println(i);
+			//Check if tags are in DB
+			if(this.getTagByContains(i) != null) {
+				//if it is get that tag object
+				Tag thisTag = this.getTagByContains(i);
+				//Add  it to Array list 
+				tagsOutput.add(thisTag);
+			}else {
+				//if its is not Save it as tag Object
+				this.createTag(i);
+				//get that tag object
+				Tag thisTag = this.getTagByContains(i);
+				//Add  it to Array list 
+				tagsOutput.add(thisTag);
+			}
+		}
+		//System.out.println(tagsOutput);
+		return tagsOutput;
+	}
+	
+	
 }

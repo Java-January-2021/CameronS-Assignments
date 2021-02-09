@@ -8,4 +8,5 @@ import com.cameronsmith.dojooverflow.models.Tag;
 
 public interface TagRepo extends CrudRepository<Tag, Long> {
 	List<Tag> findAll();
+	Tag findBySubjectContaining(String search);
 }

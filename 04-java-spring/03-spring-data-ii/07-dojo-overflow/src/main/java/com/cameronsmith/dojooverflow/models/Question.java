@@ -16,7 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -39,6 +38,8 @@ public class Question {
 	protected void onUpdate(){
 		this.updatedAt = new Date();
 	}
+	
+	
 	private String question;
 	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -46,6 +47,7 @@ public class Question {
         joinColumns = @JoinColumn(name = "question_id"), 
         inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
+	
     private List<Tag> tags;
 	@OneToMany(mappedBy="question", fetch = FetchType.LAZY)
     private List<Answer> answers;
