@@ -37,8 +37,38 @@
 }
 #questionInput{
 	width: 600px;
-	overflow:scroll;
+}
+#tagInput{
+	width: 600px;
+}
+.formDiv{
+	padding: 10px;
 }
 .tableLink{
+	color: yellow;
+}
+#questionDisplay{
+	display: inline-block;
+	margin-left: 164.5px;
+}
+.questionTd{
+	padding: 5px 30px 5px 5px;
+}
+.tagTd{
+	padding: 5px;
+	text-align: center;
+	border-style: solid;
+	border-color: black;
+	border-radius: 10px;
+	border-width: 1px;
+}
+.tableHead{
+	color: black;
+	text-align: center;
+}
+#inputForm{
+	text-align: center;
+}
+#infoLink{
 	color: yellow;
 }

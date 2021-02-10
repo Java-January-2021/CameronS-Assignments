@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome!</title>
+<title>Question #${question.id}</title>
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 	<div id=wrapper>
-		<h1 id="head">Hello World</h1>
+		<h1 id="head">${question.question}</h1>
 	</div>
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -26,7 +27,6 @@ public class MainController {
 	@GetMapping("/dashboard")
 	public String dashboard(Model viewModel) {
 		List<Question> allQuestions = mService.getAllQuestions();
-		//Access indivudual tag object	 subjects
 		
 		viewModel.addAttribute("allQuestions", allQuestions);
 		return "allQuestions.jsp";
@@ -37,18 +37,18 @@ public class MainController {
 		return "newQuestion.jsp";
 	}
 	@PostMapping("/questions/new")
-	public String addQuestion(@RequestParam("question")String questionInput,@RequestParam("tags")String tagsInput, RedirectAttributes redirectAttr) {
-		//take tagsInput and split into single strings and add to ArrayList
-		ArrayList<Tag>tagsOutput = this.mService.splitTagString(tagsInput);
-		System.out.println(tagsOutput);
-		//Validations NotEmpty
-		//Need Validations for max=3, comma separated and lower case
+	public String addQuestion(@RequestParam("question") String questionInput, @RequestParam("tags") String tagsInput, RedirectAttributes redirectAttr) {
+		//Validations NotEmpty,  max=3 tags, 
+		//Need Validations for comma separated and lower case
 		ArrayList<String> errors = new ArrayList<String>();
 		if(questionInput.equals("")) {
 			errors.add("Question cannot be blank.");
 		}
-		if(tagsInput.equals("")) {
+		else if(tagsInput.equals("")) {
 			errors.add("Tags cannot be blank.");
+		}
+		else if(tagsInput.indexOf(",")> 2) {
+			errors.add("Cannot input more than 3 tags.");
 		}
 		if(errors.size() > 0) {
 			for(String e: errors){
@@ -56,9 +56,17 @@ public class MainController {
 			}
 			return "redirect:/questions/new";
 		}
-		//
+		//take tagsInput and split into single strings and add to ArrayList
+		ArrayList<Tag>tagsOutput = this.mService.splitTagString(tagsInput.toLowerCase());
+		System.out.println(tagsOutput);
 		//Create Question object with private tag list
 		this.mService.createQuestion(questionInput, tagsOutput);
 		return "redirect:/dashboard";
+	}
+	@GetMapping("/question/{id}")
+	public String showQuestionInfo(@PathVariable("id")Long id, Model viewModel) {
+		Question thisQuestion = mService.getQuestionById(id);
+		viewModel.addAttribute("question", thisQuestion);
+		return "/showQuestion.jsp";
 	}
 }

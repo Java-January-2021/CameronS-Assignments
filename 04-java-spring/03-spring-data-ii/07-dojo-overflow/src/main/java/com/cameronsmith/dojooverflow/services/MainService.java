@@ -58,8 +58,9 @@ public class MainService {
 		return this.qRepo.findById(id).orElse(null);
 	}
 	//Read Relationship Tables
-	public List<Tag> getQuestionTags(){
-		return this.getQuestionTags();
+	public List<Tag> getQuestionTagsByQId(Long id){
+		List<Tag> tagsValue = this.getQuestionById(id).getTags();
+		return tagsValue;
 	}
 	public List<Answer> getQuestionAnswers(){
 		return this.getQuestionAnswers();
@@ -136,10 +137,6 @@ public class MainService {
 	public Tag getTagById(Long id) {
 		return this.tRepo.findById(id).orElse(null);
 	}
-	public Tag getTagByContains(String input) {
-		Tag thisTag = this.tRepo.findBySubjectContaining(input);
-		return thisTag;
-	}
 	//Read Relationship Tables
 	public List<Question> getTagQuestions(){
 		return this.getTagQuestions();
@@ -154,6 +151,19 @@ public class MainService {
 		questions.remove(question);
 		this.tRepo.save(tag);
 	}
+	//get Tag by String of subject
+	public Tag tagBySubject(String subject) {
+		//Find if there is a tag containing new tag content
+		Tag thisTag = this.tRepo.findBySubjectContaining(subject);
+		//Check if the new tag string is exactly equal
+		if(subject.equals(thisTag.getSubject())) {
+			//If it is return the eexisting tag object
+			return thisTag;
+		}else {
+			//If it in not return null
+			return null;
+		}
+	}
 	//Split Tag String from form Input
 	//Save new tags and output list of tag objects? or strings of tags
 	public ArrayList<Tag> splitTagString(String tagsInput){
@@ -163,21 +173,19 @@ public class MainService {
 		for(String i: tagsInput.split(", ")) {
 			System.out.println(i);
 			//Check if tags are in DB
-			if(this.getTagByContains(i) != null) {
-				//if it is get that tag object
-				Tag thisTag = this.getTagByContains(i);
+			if(this.tagBySubject(i) != null) {
+				//if it is in DB get that tag 
 				//Add  it to Array list 
-				tagsOutput.add(thisTag);
+				tagsOutput.add(this.tagBySubject(i));
 			}else {
 				//if its is not Save it as tag Object
-				this.createTag(i);
 				//get that tag object
-				Tag thisTag = this.getTagByContains(i);
+				Tag thisTag =  this.createTag(i);
 				//Add  it to Array list 
 				tagsOutput.add(thisTag);
+				
 			}
 		}
-		//System.out.println(tagsOutput);
 		return tagsOutput;
 	}
 	
