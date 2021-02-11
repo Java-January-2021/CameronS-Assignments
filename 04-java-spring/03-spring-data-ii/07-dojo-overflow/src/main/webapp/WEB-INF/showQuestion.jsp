@@ -35,7 +35,7 @@
 			</c:forEach>
 		</tbody>
 		</table>
-		<form:form id="answerForm" action="/question/${question.id}" method="post" modelAttribute="answer">
+		<form:form id="answerForm" action="/question/${question.id}" method="post" modelAttribute="answerInput">
 		        <form:errors id="validations" path="answer"/>
 		    <div class="formDiv">
 		        <form:label path="answer">Answer</form:label>

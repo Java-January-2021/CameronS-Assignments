@@ -69,20 +69,21 @@ public class MainController {
 		return "redirect:/dashboard";
 	}
 	@GetMapping("/question/{id}")
-	public String showQuestionInfo(@ModelAttribute("answer")Answer answerInput, @PathVariable("id")Long id, Model viewModel, BindingResult result) {
+	public String showQuestionInfo(@ModelAttribute("answerInput")Answer answerInput, @PathVariable("id")Long id, Model viewModel, BindingResult result) {
 		Question thisQuestion = mService.getQuestionById(id);
 		
 		viewModel.addAttribute("question", thisQuestion);
 		return "/showQuestion.jsp";
 	}
 	@PostMapping("/question/{id}")
-	public String addAnswer(@Valid @ModelAttribute("answer")Answer answerInput, BindingResult result, @PathVariable("id")Long id, Model viewModel) {
+	public String addAnswer(@Valid @ModelAttribute("answerInput")Answer answerInput, BindingResult result, @PathVariable("id")Long id, Model viewModel) {
 		Question thisQuestion = mService.getQuestionById(id);
 		viewModel.addAttribute("question", thisQuestion);
 		if (result.hasErrors()) {
 			return "/showQuestion.jsp";
 		}
-		Answer newAnswer = this.mService.createAnswer(answerInput);
+		Answer newAnswer = answerInput;
+		this.mService.createAnswer(newAnswer.getAnswer(), thisQuestion);
 		System.out.println(newAnswer);
 		//this.mService.addAnswerToQuestion(answerInput, thisQuestion);
 		return "redirect:/question/{id}";
