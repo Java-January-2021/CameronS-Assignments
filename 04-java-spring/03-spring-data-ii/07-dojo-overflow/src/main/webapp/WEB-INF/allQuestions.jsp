@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id=wrapper>
-	<a class="indexLink" href="/">Main</a>
+	<a class="indexLink" href="/">Main</a> | <a class="additionalLink" href="/questions/new">Ask a Question</a>
 		<h1 id="head">Questions Dashboard</h1>
 		<table id="questionDisplay">
 		<thead>
@@ -33,7 +33,7 @@
 			</c:forEach>
 		</tbody>
 		</table>
-		<a class="indexLink" href="/questions/new">Ask a Question</a>
+<!-- 		<a class="indexLink" href="/questions/new">Ask a Question</a> -->
 	</div>
 </body>
 </html>

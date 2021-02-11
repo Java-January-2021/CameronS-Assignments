@@ -153,16 +153,19 @@ public class MainService {
 	}
 	//get Tag by String of subject
 	public Tag tagBySubject(String subject) {
+		//System.out.println(subject);
 		//Find if there is a tag containing new tag content
-		Tag thisTag = this.tRepo.findBySubjectContaining(subject);
+		List<Tag> thisTagList = this.tRepo.findBySubjectContaining(subject);
+		System.out.println(thisTagList);
 		//Check if the new tag string is exactly equal
-		if(subject.equals(thisTag.getSubject())) {
-			//If it is return the eexisting tag object
-			return thisTag;
-		}else {
-			//If it in not return null
-			return null;
+		for(Tag i: thisTagList) {
+			if(subject.equals(i.getSubject())) {
+				//If it is return the existing tag object
+				return i;
+			}
 		}
+		//If it in not return null
+		return null;
 	}
 	//Split Tag String from form Input
 	//Save new tags and output list of tag objects? or strings of tags
@@ -175,7 +178,8 @@ public class MainService {
 			//Check if tags are in DB
 			if(this.tagBySubject(i) != null) {
 				//if it is in DB get that tag 
-				//Add  it to Array list 
+				//Add  it to Array list
+				//Tag thisTag = ;
 				tagsOutput.add(this.tagBySubject(i));
 			}else {
 				//if its is not Save it as tag Object

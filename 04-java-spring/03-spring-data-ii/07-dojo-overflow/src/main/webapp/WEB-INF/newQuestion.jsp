@@ -27,7 +27,7 @@
 	        <label class="formLabel" for="tags">Tags:</label>
 	        <input id="tagInput" type="text" name="tags"/>
 	    </div>
-	    <input id="button" type="submit" value="Submit"/>
+	    <input id="button" type="submit" value="ASK"/>
 	</form>
 	</div>
 </body>
