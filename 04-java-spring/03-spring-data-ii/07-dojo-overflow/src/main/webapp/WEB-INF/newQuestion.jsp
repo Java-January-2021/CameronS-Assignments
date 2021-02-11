@@ -28,7 +28,7 @@
 	        <input id="tagInput" type="text" name="tags"/>
 	    </div>
 	    <input id="button" type="submit" value="ASK"/>
-	</form>
+		</form>
 	</div>
 </body>
 </html>

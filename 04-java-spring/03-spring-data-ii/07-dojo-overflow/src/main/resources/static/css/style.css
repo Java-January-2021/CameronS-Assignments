@@ -77,6 +77,8 @@
 	color: yellow;
 }
 #button{
+	display: inline-block;
+	text-align: center;
 	padding: 6px 10px;
 	font-weight: bold;
 	border-radius: 12px;
@@ -84,4 +86,39 @@
 .formLabel{
 	color: black;
 	font-weight: bold;
+}
+#tagsDisplay{
+	display: inline-block;
+	margin: 0px 300px 25px 150px;
+}
+.qDisplayTag{
+	display: inline-block;
+	padding: 6px 15px;
+	text-align: center;
+	border-style: solid;
+	border-color: black;
+	border-radius: 10px;
+	border-width: 1px;
+	margin-left: 30px;
+}
+#qDisplayHead{
+	display: inline-block;
+	color: yellow;
+	font-weight: bold;
+	font-size: x-large;
+}
+#answerDisplay{
+	display:inline-block;
+	margin-left: 125px;
+}
+#answerForm{
+	display: inline-block;
+	margin-left: 200px;
+}
+.answerInput{
+	width: 350px;
+}
+#validations{
+	color: yellow;
+/* 	dislay:; */
 }

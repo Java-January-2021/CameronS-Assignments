@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -36,6 +37,7 @@ public class Answer {
 	protected void onUpdate(){
 		this.updatedAt = new Date();
 	}
+	@NotBlank
 	private String answer;
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="question_id")

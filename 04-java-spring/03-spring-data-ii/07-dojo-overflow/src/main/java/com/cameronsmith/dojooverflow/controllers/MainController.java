@@ -3,15 +3,20 @@ package com.cameronsmith.dojooverflow.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cameronsmith.dojooverflow.models.Answer;
 import com.cameronsmith.dojooverflow.models.Question;
 import com.cameronsmith.dojooverflow.models.Tag;
 import com.cameronsmith.dojooverflow.services.MainService;
@@ -58,15 +63,29 @@ public class MainController {
 		}
 		//take tagsInput and split into single strings and add to ArrayList
 		ArrayList<Tag>tagsOutput = this.mService.splitTagString(tagsInput.toLowerCase());
-		System.out.println(tagsOutput);
+		//System.out.println(tagsOutput);
 		//Create Question object with private tag list
 		this.mService.createQuestion(questionInput, tagsOutput);
 		return "redirect:/dashboard";
 	}
 	@GetMapping("/question/{id}")
-	public String showQuestionInfo(@PathVariable("id")Long id, Model viewModel) {
+	public String showQuestionInfo(@ModelAttribute("answer")Answer answerInput, @PathVariable("id")Long id, Model viewModel, BindingResult result) {
 		Question thisQuestion = mService.getQuestionById(id);
+		
 		viewModel.addAttribute("question", thisQuestion);
 		return "/showQuestion.jsp";
 	}
+	@PostMapping("/question/{id}")
+	public String addAnswer(@Valid @ModelAttribute("answer")Answer answerInput, BindingResult result, @PathVariable("id")Long id, Model viewModel) {
+		Question thisQuestion = mService.getQuestionById(id);
+		viewModel.addAttribute("question", thisQuestion);
+		if (result.hasErrors()) {
+			return "/showQuestion.jsp";
+		}
+		Answer newAnswer = this.mService.createAnswer(answerInput);
+		System.out.println(newAnswer);
+		//this.mService.addAnswerToQuestion(answerInput, thisQuestion);
+		return "redirect:/question/{id}";
+	}
+	
 }

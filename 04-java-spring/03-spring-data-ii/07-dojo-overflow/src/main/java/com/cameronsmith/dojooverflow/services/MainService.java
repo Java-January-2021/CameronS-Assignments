@@ -156,7 +156,7 @@ public class MainService {
 		//System.out.println(subject);
 		//Find if there is a tag containing new tag content
 		List<Tag> thisTagList = this.tRepo.findBySubjectContaining(subject);
-		System.out.println(thisTagList);
+		//System.out.println(thisTagList);
 		//Check if the new tag string is exactly equal
 		for(Tag i: thisTagList) {
 			if(subject.equals(i.getSubject())) {
@@ -174,7 +174,7 @@ public class MainService {
 		ArrayList<Tag> tagsOutput = new ArrayList<Tag>();
 		//split taginput string at each comma
 		for(String i: tagsInput.split(", ")) {
-			System.out.println(i);
+			//System.out.println(i);
 			//Check if tags are in DB
 			if(this.tagBySubject(i) != null) {
 				//if it is in DB get that tag 
