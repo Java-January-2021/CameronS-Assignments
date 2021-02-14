@@ -36,27 +36,27 @@ public class EventService {
 		this.eRepo.deleteById(id);
 	}
 	public Event getByState(String eventState) {
-		return this.eRepo.findByNameContaining(eventState);
+		return this.eRepo.findByEventNameContaining(eventState);
 	}
 	public Event getByLocation(String eventLocation) {
-		return this.eRepo.findByLocationContaining(eventLocation);
+		return this.eRepo.findByEventLocationContaining(eventLocation);
 	}
 	public Event getByName(String eventName) {
-		return this.eRepo.findByNameContaining(eventName);
+		return this.eRepo.findByEventNameContaining(eventName);
 	}
 	public List<User> getUsersAttending(){
 		return this.getUsersAttending();
 	}
-	public void addUserToAttend(Event event, User user) {
-		List<User> usersAttending = event.getUsersAttending();
-		usersAttending.add(user);
-		this.eRepo.save(event);
-	}
-	public void removeUserToAttend(Event event, User user) {
-		List<User> usersAttending = event.getUsersAttending();
-		usersAttending.remove(user);
-		this.eRepo.save(event);
-	}
+//	public void addUserToAttend(Event event, User user) {
+//		List<User> usersAttending = event.getUsersAttending();
+//		usersAttending.add(user);
+//		this.eRepo.save(event);
+//	}
+//	public void removeUserToAttend(Event event, User user) {
+//		List<User> usersAttending = event.getUsersAttending();
+//		usersAttending.remove(user);
+//		this.eRepo.save(event);
+//	}
 	public List<Message> getMessages(){
 		return this.getMessages();
 	}

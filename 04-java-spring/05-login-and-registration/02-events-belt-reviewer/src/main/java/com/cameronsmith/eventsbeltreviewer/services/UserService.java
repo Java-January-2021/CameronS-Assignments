@@ -40,7 +40,7 @@ public class UserService {
 	public List<User> getAll(){
 		return this.uRepo.findAll();
 	}
-	public User getUserById(Long id) {
+	public User getById(Long id) {
 		return this.uRepo.findById(id).orElse(null);
 	}
 	public void deleteById(Long id) {
@@ -60,7 +60,7 @@ public class UserService {
 		this.uRepo.save(user);
 	}
 	public List<Event> getUserEAByUserId(Long id){
-		List<Event> eventsAttending = this.getUserById(id).getEventsAttending();
+		List<Event> eventsAttending = this.getById(id).getEventsAttending();
 		return eventsAttending;
 	}
 	public List<Event> getEventsCreated(){

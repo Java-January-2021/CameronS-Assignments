@@ -38,6 +38,7 @@ public class Message {
 	}
 	@NotBlank
 	private String messageContent;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;

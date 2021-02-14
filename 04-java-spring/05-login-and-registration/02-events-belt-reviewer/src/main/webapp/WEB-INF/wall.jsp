@@ -6,12 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome!</title>
+<title>Welcome, ${user.firstName}</title>
 <link rel="stylesheet" href="/css/wallStyle.css">
 </head>
 <body>
 	<div id=wrapper>
-		<h1 id="head">Hello World</h1>
+	<a id="logOutLink" href="/logOutUser">Log Out</a>
+		<h1 id="head">Hello, ${user.firstName} ${user.lastName}!</h1>
 	</div>
 </body>
 </html>

@@ -8,9 +8,9 @@ import com.cameronsmith.eventsbeltreviewer.models.Event;
 
 public interface EventRepo extends CrudRepository<Event, Long>{
 	List<Event> findAll();
-	boolean existsByState(String state);
-	Event findByStateContaining(String eventState);
-	Event findByLocationContaining(String eventLocation);
-	Event findByNameContaining(String eventName);
+	boolean existsByEventState(String state);
+	Event findByEventStateContaining(String eventState);
+	Event findByEventLocationContaining(String eventLocation);
+	Event findByEventNameContaining(String eventName);
 	
 }

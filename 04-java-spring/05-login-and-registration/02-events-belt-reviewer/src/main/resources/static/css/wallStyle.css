@@ -15,3 +15,8 @@
 	color: black;
 	margin-top: 50px;
 }
+#logOutLink{
+	display: inline-block;
+	color: yellow;
+	margin: 15px 0px 0px 800px;
+}

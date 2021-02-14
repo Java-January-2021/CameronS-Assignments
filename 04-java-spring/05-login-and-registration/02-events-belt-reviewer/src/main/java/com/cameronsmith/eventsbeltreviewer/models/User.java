@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
@@ -62,10 +62,13 @@ public class User {
 	@NotBlank
 	@Transient
 	private String confirmPassword;
+	
+	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	private List<Event> eventsCreated;
+	
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private List<Message> userMessages;
-	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-    private List<Event> eventsCreated;
+	
 	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "users_events", 

@@ -49,15 +49,18 @@ public class Event {
 	private String eventLocation;
 	@NotBlank
 	@Size(min=2)
-	private String EventState;
+	private String eventState;
 	@NotBlank
 	@DateTimeFormat(pattern="MM/dd/yyyy")
 	private Date eventDate;
+	
 	@OneToMany(mappedBy="event", fetch = FetchType.LAZY)
     private List<Message> eventMessages;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
-    private User userCreator;
+    private User user;
+	
 	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "users_events", 
@@ -72,7 +75,7 @@ public class Event {
 	public Event(String eventName, String eventLocation, String eventState, Date eventDate) {
 		this.eventName = eventName;
 		this.eventLocation = eventLocation;
-		this.EventState = eventState;
+		this.eventState = eventState;
 		this.eventDate = eventDate;
 	}
 	
@@ -107,10 +110,10 @@ public class Event {
 		this.eventLocation = eventLocation;
 	}
 	public String getEventState() {
-		return this.EventState;
+		return this.eventState;
 	}
 	public void setEventState(String eventState) {
-		this.EventState = eventState;
+		this.eventState = eventState;
 	}
 	public Date getEventDate() {
 		return this.eventDate;
@@ -124,11 +127,11 @@ public class Event {
 	public void setEventMessages(List<Message> eventMessages) {
 		this.eventMessages = eventMessages;
 	}
-	public User getUserCreator() {
-		return this.userCreator;
-	}
 	public void setUserCreator(User userCreator) {
-		this.userCreator = userCreator;
+		this.user = userCreator;
+	}
+	public User getUserCreator() {
+		return this.user;
 	}
 	public List<User> getUsersAttending() {
 		return this.usersAttending;
