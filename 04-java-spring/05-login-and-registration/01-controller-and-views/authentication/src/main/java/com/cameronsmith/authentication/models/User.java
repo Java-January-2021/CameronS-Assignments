@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -37,18 +38,19 @@ public class User {
 		protected void onUpdate(){
 			this.updatedAt = new Date();
 		}
-		@NotBlank
-		@Email
+		@NotBlank(message="Email Required")
+		@Email(message="Invalid Email")
+		@Pattern(regexp=".[A-Za-z0-9._%+-]+@[A-Za-z0-9.-].+\\..[a-z]{2,6}$", message="Invalid Email")
 		private String email;
-		@NotBlank
-		@Size(min=2, max=255)
+		@NotBlank(message="First Name Required")
+		@Size(min=2, max=255, message="Must be 2-255 characters")
 		private String firstName;
-		@NotBlank
-		@Size(min=2, max=255)
+		@NotBlank(message="Last Name Required")
+		@Size(min=2, max=255, message="Must be 2-255 characters")
 		private String lastName;
-		@NotBlank
+		@NotBlank(message="Password Required")
 		private String password;
-		@NotBlank
+		@NotBlank(message="Password Comparison Required")
 		@Transient
 		private String confirmPassword;
 		//Constructors >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
