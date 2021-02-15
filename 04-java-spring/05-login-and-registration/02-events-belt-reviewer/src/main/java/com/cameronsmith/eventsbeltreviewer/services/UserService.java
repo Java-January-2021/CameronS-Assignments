@@ -31,8 +31,10 @@ public class UserService {
 		User user = this.uRepo.findByEmail(email);
 		if(user == null) {
 			return false;
+		}else if(user != null && user.getEmail().equals(email)){
+			return BCrypt.checkpw(password, user.getPassword());
 		}
-		return BCrypt.checkpw(password, user.getPassword());
+		return false;
 	}
 	public User updateEntry(User toUpdate) {
 		return this.uRepo.save(toUpdate);

@@ -46,7 +46,7 @@ public class MasterController {
 	}
 	@PostMapping("/login")
 	public String loginUser(@RequestParam("loginEmail")String email, @RequestParam("loginPassword")String password, RedirectAttributes redirectAttrs, HttpSession session) {
-		if(!this.uService.authenticateUser(email, password)) {
+		if(!this.uService.authenticateUser(email.toLowerCase(), password)) {
 			redirectAttrs.addFlashAttribute("loginError", "Invalid Credantials");
 			return "redirect:/";
 		}
