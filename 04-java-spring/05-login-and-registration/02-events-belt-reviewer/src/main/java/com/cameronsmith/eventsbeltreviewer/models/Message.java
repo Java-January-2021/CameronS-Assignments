@@ -49,8 +49,10 @@ public class Message {
 	public Message() {
 		
 	}
-	public Message(String messageContent) {
+	public Message(String messageContent, User user, Event event) {
 		this.messageContent = messageContent;
+		this.user = user;
+		this.event = event;
 	}
 	
 	public Long getId() {

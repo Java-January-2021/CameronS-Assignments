@@ -7,32 +7,41 @@
 <head>
 <meta charset="UTF-8">
 <title>${event.eventName}</title>
-<link rel="stylesheet" href="/css/dashStyle.css">
+<link rel="stylesheet" href="/css/showStyle.css">
 </head>
 <body>
 	<div id=wrapper>
-	<a id="logOutLink" href="/wall">All Events</a>
-		<div id="infoDiv">
+	<a id="wallLink" href="/wall">All Events</a>
 		<h1 id="head">${event.eventName}</h1>
-		<h3>Host: ${event.user.firstName}</h3>
-		<h3>Date: ${event.eventDate}</h3>
-		<h3>Locatoin: ${event.eventLocation}</h3>
-		<h2>Attendees: ${aCount}</h2>
+		<div id="infoDiv">
+		<h3 class="displaySubHead">Host:<span class="displayInfo"> ${event.user.firstName}</span></h3>
+		<h3 class="displaySubHead">Date:<span class="displayInfo"> ${event.eventDate}</span></h3>
+		<h3 class="displaySubHead">Location:<span class="displayInfo"> ${event.eventLocation}</span></h3>
+		<h2 class="displaySubHead">Attendees:<span id="displayCount"> ${aCount}</span></h2>
 		<table id="aTable">
 		<tbody>
 		<c:forEach items="${attendees}" var="user">
 			<tr>
-			<td>${user.firstName} ${user.lastName}</td>
-			<td>${user.location}</td>
+			<td class="nData">${user.firstName} ${user.lastName}</td>
+			<td class="lData">${user.location}</td>
 			</tr>
 		</c:forEach>
 		</tbody>
 		</table>
 		</div>
 		<div id="messageDiv">
-		<c:forEach items="messages" var="m">
-<%-- 		 <p>${m.messageContent}</p> --%>
+		<c:forEach items="${eventMessages}" var="m">
+		 <p id="mDisplay">${m.user.firstName}: ${m.messageContent}</p>
 		</c:forEach>
+		</div>
+		<div id="addMessage">
+		<h4 id="mInputHead">Add A Message:</h4>
+		<form:form method="post" action="/addMessage/${event.id}" modelAttribute="message">
+		<form:hidden value="${event.id}" path="event"/>
+		<form:hidden value="${currentUser.id}" path="user"/>
+		<form:input class="messInput" path="messageContent"/>
+		<input id="button" type="submit" value="Submit"/>
+		</form:form>
 		</div>
 	</div>
 </body>

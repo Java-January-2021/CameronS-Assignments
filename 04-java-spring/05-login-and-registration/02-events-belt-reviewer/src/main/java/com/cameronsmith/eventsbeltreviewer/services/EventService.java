@@ -44,15 +44,15 @@ public class EventService {
 	public Event getByName(String eventName) {
 		return this.eRepo.findByEventNameContaining(eventName);
 	}
-	public List<User> getUsersAttending(){
-		return this.getUsersAttending();
-	}
-	public void addUserToAttend(Event event, User user) {
+//	public List<User> getUsersAttending(){
+//		return this.getUsersAttending();
+//	}
+	public void joinEvent(Event event, User user) {
 		List<User> usersAttending = event.getUsersAttending();
 		usersAttending.add(user);
 		this.eRepo.save(event);
 	}
-	public void removeUserToAttend(Event event, User user) {
+	public void unJoinEvent(Event event, User user) {
 		List<User> usersAttending = event.getUsersAttending();
 		usersAttending.remove(user);
 		this.eRepo.save(event);
@@ -68,6 +68,7 @@ public class EventService {
 		List<Event> outStateEvents = this.eRepo.findByEventStateIsNot(currentState);
 		return outStateEvents;
 	}
+	@SuppressWarnings("unused")
 	public Integer getAttendeeCount(Event event) {
 		Integer count = 0;
 		List<User> attendees = event.getUsersAttending();

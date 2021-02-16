@@ -3,7 +3,7 @@
 	width: 1000px;
 	height: 600px;
 	margin: 0px auto;
-	padding-top: 5px;
+	padding: 15px 0px;
 	background: rgb(103,105,199);
 	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
 	font-family: Arial;
@@ -14,4 +14,70 @@
 	text-decoration: underline;
 	color: black;
 	margin-top: 50px;
+}
+.displaySubHead{
+	color: black;
+	text-decoration: none;
+}
+.displayInfo{
+	color: white;
+	text-decoration: underline yellow;
+}
+#displayCount{
+	color: yellow;
+}
+#wallLink{
+	display: inline-block;
+	color: yellow;
+	margin-left: 800px;
+}
+#infoDiv{
+	display: inline-Block;
+	margin: 10px 0px 0px 130px;
+	vertical-align: top;
+}
+.nData{
+	padding: 6px;
+	color: black;
+	font-weight: bold;
+}
+.lData{
+	padding: 6px;
+	font-weight: bold;
+}
+#messageDiv{
+	display: inline-block;
+	padding: 20px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	border-radius: 10px;
+	width: 400px;
+	height: 300px;
+	vertical-align: top;
+	margin: 10px 0px 0px 100px;
+	color: black;
+}
+#mDisplay{
+	background: white;
+	overflow:auto;
+	text-overflow: inherit;
+	padding: 5px;
+	margin: 10px 0px;
+}
+#addMessage{
+	display: inline-block;
+	width: 320px;
+	margin-left: 95px;
+	vertical-align: top;
+}
+.messInput{
+	width: 300px;
+	text-overflow: inherit;
+}
+#mInputHead{
+	margin-top: 0px;
+}
+#button{
+	margin: 10px;
 }

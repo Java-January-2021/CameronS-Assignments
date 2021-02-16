@@ -18,9 +18,9 @@ public class MessageService {
 	public Message createEntry(Message newEntry) {
 		return this.mRepo.save(newEntry);
 	}
-	public Message updateEntry(Message toUpdate) {
-		return this.mRepo.save(toUpdate);
-	}
+//	public Message updateEntry(Message toUpdate) {
+//		return this.mRepo.save(toUpdate);
+//	}
 	public List<Message> getAll(){
 		return this.mRepo.findAll();
 	}

@@ -53,7 +53,7 @@ public class Event {
 	private String eventState;
 	@NotNull(message="Date Required")
 	@Future(message="You Cannot Time Travel.")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date eventDate;
 	
 	@OneToMany(mappedBy="event", fetch = FetchType.LAZY)

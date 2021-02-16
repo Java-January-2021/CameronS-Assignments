@@ -34,15 +34,15 @@
 				<td class="tData">${event.user.firstName}</td>
 				<c:choose>
 					<c:when test="${currentUser.id == event.user.id}">
-					<td><a class="tLink" href="/deleteEvent">Delete</a> | <a class="tLink" href="/editEvent">Edit</a></td>
+						<td><a class="tLink" href="/${event.id}/delete">Delete</a> | <a class="tLink" href="/${event.id}/edit">Edit</a></td>
 					</c:when>	
 					<c:otherwise>
 					<c:choose>
-						<c:when test="">
-						<td><a class="tLink" href="">Join</a></td>
+						<c:when test="${event.usersAttending.contains(currentUser)}">
+						<td><a class="tLink" href="/unJoinEvent/${event.id}">UnJoin</a></td>
 						</c:when>
 						<c:otherwise>
-						<td><a class="tLink" href=""> UnJoin</a></td>
+						<td><a class="tLink" href="/joinEvent/${event.id}">Join</a></td>
 						</c:otherwise>
 					</c:choose>
 					</c:otherwise>		
@@ -74,12 +74,19 @@
 				<td class="tData">${event.eventState}</td>
 				<td class="tData">${event.user.firstName}</td>
 				<c:choose>
-					<c:when test="">
-					<td><a class="tLink" href="">Join</a></td>
-					</c:when>
+					<c:when test="${currentUser.id == event.user.id}">
+					<td><a class="tLink" href="/${event.id}/delete">Delete</a> | <a class="tLink" href="/${event.id}/edit">Edit</a></td>
+					</c:when>	
 					<c:otherwise>
-					<td>Joined |<a class="tLink" href=""> Cancel</a></td>
-					</c:otherwise>
+					<c:choose>
+						<c:when test="${event.usersAttending.contains(currentUser)}">
+						<td><a class="tLink" href="/unJoinEvent/${event.id}">UnJoin</a></td>
+						</c:when>
+						<c:otherwise>
+						<td><a class="tLink" href="/joinEvent/${event.id}">Join</a></td>
+						</c:otherwise>
+					</c:choose>
+					</c:otherwise>		
 				</c:choose>
 				</tr>
 			</c:forEach>
