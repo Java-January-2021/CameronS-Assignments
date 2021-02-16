@@ -33,8 +33,9 @@ public class UserService {
 			return false;
 		}else if(user != null && user.getEmail().equals(email)){
 			return BCrypt.checkpw(password, user.getPassword());
-		}
+		}else {
 		return false;
+		}
 	}
 	public User updateEntry(User toUpdate) {
 		return this.uRepo.save(toUpdate);

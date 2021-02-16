@@ -1,9 +1,9 @@
 @charset "UTF-8";
 #wrapper{
 	width: 1000px;
-	height: 600px;
+	height: fit-content;
 	margin: 0px auto;
-	padding-top: 5px;
+	padding: 15px 0px;
 	background: rgb(103,105,199);
 	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
 	font-family: Arial;
@@ -15,8 +15,51 @@
 	color: black;
 	margin-top: 50px;
 }
+.subHead{
+	text-align: center;
+}
 #logOutLink{
 	display: inline-block;
 	color: yellow;
-	margin: 15px 0px 0px 800px;
+	margin-left: 800px;
+}
+#eventForm{
+	display: inline-block;
+	margin: 10px 0px 0px 100px;
+}
+.tHead{
+	color: black;
+}
+.formGroup{
+	padding: 6px;
+}
+#button{
+	margin: 6px;
+}
+.validation{
+	color: yellow;
+}
+#otherEventTable{
+	text-align: center;
+	margin: 10px 0px 0px 150px;
+	width: 800px;
+}
+#stateEventTable{
+	margin: 10px 0px 0px 150px;
+	width: 800px;
+	text-align: center;
+}
+.tHead{
+	padding: 0px 20px;
+	text-align: center;
+}
+.tData{
+	padding: 8px 20px;
+	text-align: center;
+}
+#iLink{
+	color: yellow;
+}
+.tLink{
+	color: yellow;
 }

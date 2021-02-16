@@ -11,6 +11,7 @@
 </head>
 <body>
 	<div id=wrapper>
+	<a id="logOutLink" href="/wall">All Events</a>
 		<h1 id="head">Hello World</h1>
 	</div>
 </body>

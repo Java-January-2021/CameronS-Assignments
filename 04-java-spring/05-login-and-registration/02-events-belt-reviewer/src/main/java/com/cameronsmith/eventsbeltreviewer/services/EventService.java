@@ -47,17 +47,33 @@ public class EventService {
 	public List<User> getUsersAttending(){
 		return this.getUsersAttending();
 	}
-//	public void addUserToAttend(Event event, User user) {
-//		List<User> usersAttending = event.getUsersAttending();
-//		usersAttending.add(user);
-//		this.eRepo.save(event);
-//	}
-//	public void removeUserToAttend(Event event, User user) {
-//		List<User> usersAttending = event.getUsersAttending();
-//		usersAttending.remove(user);
-//		this.eRepo.save(event);
-//	}
+	public void addUserToAttend(Event event, User user) {
+		List<User> usersAttending = event.getUsersAttending();
+		usersAttending.add(user);
+		this.eRepo.save(event);
+	}
+	public void removeUserToAttend(Event event, User user) {
+		List<User> usersAttending = event.getUsersAttending();
+		usersAttending.remove(user);
+		this.eRepo.save(event);
+	}
 	public List<Message> getMessages(){
 		return this.getMessages();
+	}
+	public List<Event> getEventsByUserState(String currentState){
+		List<Event> inStateEvents = this.eRepo.findByEventState(currentState);
+		return inStateEvents;
+	}
+	public List<Event> getOtherEventsByUserState(String currentState){
+		List<Event> outStateEvents = this.eRepo.findByEventStateIsNot(currentState);
+		return outStateEvents;
+	}
+	public Integer getAttendeeCount(Event event) {
+		Integer count = 0;
+		List<User> attendees = event.getUsersAttending();
+		for(User u:attendees) {
+			count += 1;
+		}
+		return count;
 	}
 }

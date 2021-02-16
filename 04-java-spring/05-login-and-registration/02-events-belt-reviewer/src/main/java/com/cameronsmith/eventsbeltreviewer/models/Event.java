@@ -17,7 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -41,17 +43,17 @@ public class Event {
 	protected void onUpdate(){
 		this.updatedAt = new Date();
 	}
-	@NotBlank
-	@Size(min=2)
+	@NotBlank(message="Name Required")
+	@Size(min=2, max=255, message="Must be 2-255 characters")
 	private String eventName;
-	@NotBlank
-	@Size(min=2)
+	@NotBlank(message="Location Required")
+	@Size(min=2, max=255, message="Must be 2-255 characters")
 	private String eventLocation;
 	@NotBlank
-	@Size(min=2)
 	private String eventState;
-	@NotBlank
-	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull(message="Date Required")
+	@Future(message="You Cannot Time Travel.")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date eventDate;
 	
 	@OneToMany(mappedBy="event", fetch = FetchType.LAZY)
@@ -127,10 +129,10 @@ public class Event {
 	public void setEventMessages(List<Message> eventMessages) {
 		this.eventMessages = eventMessages;
 	}
-	public void setUserCreator(User userCreator) {
-		this.user = userCreator;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public User getUserCreator() {
+	public User getUser() {
 		return this.user;
 	}
 	public List<User> getUsersAttending() {

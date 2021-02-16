@@ -22,7 +22,7 @@ public class UserValidator {
 			errors.rejectValue("password", "Match", "Hey! Passwords Do Not Match.");
 		}
 		if(this.uRepo.existsByEmail(user.getEmail())) {
-			errors.rejectValue("email", "unique", "Hey! Email Already In Database.");
+			errors.rejectValue("email", "unique", "Hey! Email Is Already Registered.");
 		}
 	}
 }
