@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id=wrapper>
-	<a id="wallLink" href="/wall">All Events</a>
+	<a id="wallLink" href="/events">All Events</a>
 		<h1 id="head">${event.eventName}</h1>
 		<div id="infoDiv">
 		<h3 class="displaySubHead">Host:<span class="displayInfo"> ${event.host.firstName}</span></h3>
@@ -42,7 +42,7 @@
 <%-- 		<form:input class="messInput" path="messageContent"/> --%>
 <!-- 		<input id="button" type="submit" value="Submit"/> -->
 <%-- 		</form:form> --%>
-			<form action="/addMessage/${event.id}" method="post">
+			<form action="/events/${event.id}" method="post">
 			<input type="hidden" value="${event.id}" name="event"/>
 			<input type="hidden"value="${currentUser.id}" name="host"/>
 			<input type="text" class="messInput" name="messageContent"/>

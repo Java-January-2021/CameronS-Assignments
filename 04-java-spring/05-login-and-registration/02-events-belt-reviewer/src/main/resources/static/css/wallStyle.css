@@ -24,8 +24,9 @@
 	margin-left: 800px;
 }
 #eventForm{
-	display: inline-block;
+	display: block;
 	margin: 10px 0px 0px 100px;
+	text-align: center;
 }
 .tHead{
 	color: black;

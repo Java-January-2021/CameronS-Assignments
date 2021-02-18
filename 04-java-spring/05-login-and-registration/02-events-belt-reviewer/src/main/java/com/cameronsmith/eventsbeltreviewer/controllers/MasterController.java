@@ -37,7 +37,7 @@ public class MasterController {
 	private UserValidator validator;
 	
 	@GetMapping("/")
-	public String index(@ModelAttribute("user")User user) {
+	public String loginAndReg(@ModelAttribute("user")User user) {
 		return "index.jsp";
 	}
 	@PostMapping("/register")
@@ -48,7 +48,7 @@ public class MasterController {
 		}
 		User newUser = this.uService.registerUser(user);
 		session.setAttribute("user_id", newUser.getId());
-		return "redirect:/wall";
+		return "redirect:/events";
 	}
 	@PostMapping("/login")
 	public String loginUser(@RequestParam("loginEmail")String email, @RequestParam("loginPassword")String password, RedirectAttributes redirectAttrs, HttpSession session) {
@@ -58,10 +58,10 @@ public class MasterController {
 		}
 		User user = this.uService.getByEmail(email);
 		session.setAttribute("user_id", user.getId());
-		return "redirect:/wall";
+		return "redirect:/events";
 	}
-	@GetMapping("/wall")
-	public String wall(@ModelAttribute("event")Event event, HttpSession session, Model viewModel) {
+	@GetMapping("/events")
+	public String allEvents(@ModelAttribute("event")Event event, HttpSession session, Model viewModel) {
 		Long userId = (Long)session.getAttribute("user_id");
 		if(userId == null) {
 			return "redirect:/";
@@ -73,14 +73,9 @@ public class MasterController {
 		viewModel.addAttribute("currentUser", currentUser);
 		viewModel.addAttribute("inStateEvents", inStateEvents);
 		viewModel.addAttribute("otherStateEvents", otherStateEvents);
-		return "wallDisplay.jsp";
+		return "displayAll.jsp";
 	}
-	@GetMapping("/logOutUser")
-	public String logOut(HttpSession session) {
-		session.invalidate();
-		return "redirect:/";
-	}
-	@PostMapping("/add")
+	@PostMapping("/events/new")
 	public String newEvent(@Valid @ModelAttribute("event")Event eventInput, BindingResult result, HttpSession session, Model viewModel) {
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);
@@ -91,12 +86,68 @@ public class MasterController {
 		viewModel.addAttribute("inStateEvents", inStateEvents);
 		viewModel.addAttribute("otherStateEvents", otherStateEvents);
 		if (result.hasErrors()) {
-			return "wallDisplay.jsp";
+			return "displayAll.jsp";
 		}
 		this.eService.createEntry(eventInput);
-		return "redirect:/wall";
+		return "redirect:/events";
 	}
-	@GetMapping("/{id}/info")
+	@GetMapping("/events/{id}/join")
+	public String joinEvent(@PathVariable("id")Long eventid, HttpSession session) {
+		Long userId = (Long)session.getAttribute("user_id");
+		User currentUser = this.uService.getById(userId);
+		Event eventToJoin = this.eService.getEventById(eventid);
+		this.eService.joinEvent(eventToJoin, currentUser);
+		return "redirect:/events";
+	}
+	@GetMapping("/events/{id}/unjoin")
+	public String unJoinEvent(@PathVariable("id")Long eventId, HttpSession session) {
+		Long userId = (Long)session.getAttribute("user_id");
+		User currentUser = this.uService.getById(userId);
+		Event eventToJoin = this.eService.getEventById(eventId);
+		this.eService.unJoinEvent(eventToJoin, currentUser);
+		return "redirect:/events";
+	}
+	@GetMapping("/events/{id}/delete")
+	public String deleteEvent(@PathVariable("id")Long eventId) {
+		this.eService.deleteById(eventId);
+		return "redirect:/events";
+	}
+	@GetMapping("/events/{id}/edit")
+	public String editEvent(@ModelAttribute("event")Event eventInput, @PathVariable("id")Long eventId, Model viewModel, HttpSession session) {
+		Long userId = (Long)session.getAttribute("user_id");
+		User currentUser = this.uService.getById(userId);
+		Event eventToEdit = this.eService.getEventById(eventId);
+		if(userId.equals(eventToEdit.getHost().getId())) {
+			viewModel.addAttribute("event", eventToEdit);
+			viewModel.addAttribute("currentUser", currentUser);
+			return "edit.jsp";
+		}
+		return "redirect:/events";
+	}
+//	@PostMapping("/events/{id}/edit")
+//	public String updateEvent(@RequestParam("host")User host, @RequestParam("eventName")String name, @RequestParam("eventLocation")String location, @RequestParam("eventDate")Date date,  @RequestParam("eventState")String state, @PathVariable("id")Long eventId, HttpSession session, Model viewModel) {
+//		Event eventToEdit = this.eService.getEventById(eventId);
+//		viewModel.addAttribute("event", eventToEdit);
+//		eventToEdit.setHost(host);
+//		eventToEdit.setEventName(name);
+//		eventToEdit.setEventLocation(location);
+//		eventToEdit.setEventDate(date);
+//		eventToEdit.setEventState(state);
+//		this.eService.updateEntry(eventToEdit);
+//		return "redirect:/events";
+//	}
+	@PostMapping("/events/{id}/edit")
+	public String updateEvent(@Valid @ModelAttribute("event")Event eventInput, BindingResult result, @PathVariable("id")Long eventId, HttpSession session, Model viewModel) {
+		Event eventToEdit = this.eService.getEventById(eventId);
+		viewModel.addAttribute("event", eventToEdit);
+		if (result.hasErrors()) {
+			viewModel.addAttribute("event", eventToEdit);
+			return "edit.jsp";
+		}
+		this.eService.updateEntry(eventInput);
+		return "redirect:/events";
+	}
+	@GetMapping("/events/{id}")
 	public String eventInfo(@PathVariable("id")Long id, Model viewModel, HttpSession session) {
 		Event thisEvent = this.eService.getEventById(id);
 		viewModel.addAttribute("event", thisEvent);
@@ -105,66 +156,24 @@ public class MasterController {
 		Integer attendeeCount = this.eService.getAttendeeCount(thisEvent);
 		viewModel.addAttribute("aCount", attendeeCount);
 		List<Message> messages = thisEvent.getEventMessages();
-//		System.out.println(messages);
 		viewModel.addAttribute("messages", messages);
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);
 		viewModel.addAttribute("currentUser", currentUser);
 		return "show.jsp";
 	}
-	@PostMapping("/addMessage/{id}")
-	public String addMessage(@RequestParam("event")Event event, @RequestParam("host")User host, @RequestParam("messageContent")String messageInput, @PathVariable("id")Long id) {
+	@PostMapping("/events/{id}")
+	public String addMessage(@RequestParam("event")Event event, @RequestParam("host")User host, @RequestParam("messageContent")String messageInput, @PathVariable("id")Long eventId) {
 		Message newMessage = new Message();
 		newMessage.setEvent(event);
 		newMessage.setUser(host);
 		newMessage.setMessageContent(messageInput);
 		this.mService.createEntry(newMessage);
-		return "redirect:/"+id+"/info";
+		return "redirect:/events/"+eventId;
 	}
-	@GetMapping("/joinEvent/{id}")
-	public String joinEvent(@PathVariable("id")Long eventid, HttpSession session) {
-		Long userId = (Long)session.getAttribute("user_id");
-		User currentUser = this.uService.getById(userId);
-		Event eventToJoin = this.eService.getEventById(eventid);
-		this.eService.joinEvent(eventToJoin, currentUser);
-		return "redirect:/wall";
-	}
-	@GetMapping("/unJoinEvent/{id}")
-	public String unJoinEvent(@PathVariable("id")Long eventId, HttpSession session) {
-		Long userId = (Long)session.getAttribute("user_id");
-		User currentUser = this.uService.getById(userId);
-		Event eventToJoin = this.eService.getEventById(eventId);
-		this.eService.unJoinEvent(eventToJoin, currentUser);
-		return "redirect:/wall";
-	}
-	@GetMapping("/{id}/delete")
-	public String deleteEvent(@PathVariable("id")Long eventId) {
-		this.eService.deleteById(eventId);
-		return "redirect:/wall";
-	}
-	@GetMapping("/{id}/edit")
-	public String editEvent(@PathVariable("id")Long eventId, Model viewModel, HttpSession session) {
-		Long userId = (Long)session.getAttribute("user_id");
-		User currentUser = this.uService.getById(userId);
-		Event eventToEdit = this.eService.getEventById(eventId);
-		if(userId.equals(eventToEdit.getHost().getId())) {
-			System.out.println(eventToEdit.getHost().getId());
-			viewModel.addAttribute("event", eventToEdit);
-			viewModel.addAttribute("currentUser", currentUser);
-			return "edit.jsp";
-		}
-		return "redirect:/wall";
-	}
-	@PostMapping("/{id}/edit")
-	public String updateEvent(@RequestParam("host")User host, @RequestParam("eventName")String name, @RequestParam("eventLocation")String location, @RequestParam("eventDate")Date date,  @RequestParam("eventState")String state, @PathVariable("id")Long eventId, HttpSession session, Model viewModel) {
-		Event eventToEdit = this.eService.getEventById(eventId);
-		viewModel.addAttribute("event", eventToEdit);
-		this.eService.updateEntry(eventToEdit);
-		eventToEdit.setHost(host);
-		eventToEdit.setEventName(name);
-		eventToEdit.setEventLocation(location);
-		eventToEdit.setEventDate(date);
-		eventToEdit.setEventState(state);
-		return "redirect:/wall";
+	@GetMapping("/logOutUser")
+	public String logOut(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 }

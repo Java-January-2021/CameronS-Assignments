@@ -28,21 +28,21 @@
 			<tbody>
 			<c:forEach items="${inStateEvents}" var="event">
 				<tr>
-				<td class="tData"><a id="iLink" href="/${event.id}/info">${event.eventName}</a></td>
+				<td class="tData"><a id="iLink" href="/events/${event.id}">${event.eventName}</a></td>
 				<td class="tData">${event.eventDate}</td>
 				<td class="tData">${event.eventLocation}</td>
 				<td class="tData">${event.host.firstName}</td>
 				<c:choose>
 					<c:when test="${currentUser.id == event.host.id}">
-						<td><a class="tLink" href="/${event.id}/delete">Delete</a> | <a class="tLink" href="/${event.id}/edit">Edit</a></td>
+						<td><a class="tLink" href="/events/${event.id}/delete">Delete</a> | <a class="tLink" href="/events/${event.id}/edit">Edit</a></td>
 					</c:when>	
 					<c:otherwise>
 					<c:choose>
 						<c:when test="${event.usersAttending.contains(currentUser)}">
-						<td><a class="tLink" href="/unJoinEvent/${event.id}">UnJoin</a></td>
+						<td><a class="tLink" href="events/${event.id}/unjoin">UnJoin</a></td>
 						</c:when>
 						<c:otherwise>
-						<td><a class="tLink" href="/joinEvent/${event.id}">Join</a></td>
+						<td><a class="tLink" href="/events/${event.id}/join">Join</a></td>
 						</c:otherwise>
 					</c:choose>
 					</c:otherwise>		
@@ -68,22 +68,22 @@
 			<tbody>
 			<c:forEach items="${otherStateEvents}" var="event">
 				<tr>
-				<td><a id="iLink" href="/${event.id}/info">${event.eventName}</a></td>
+				<td><a id="iLink" href="/events/${event.id}">${event.eventName}</a></td>
 				<td class="tData">${event.eventDate}</td>
 				<td class="tData">${event.eventLocation}</td>
 				<td class="tData">${event.eventState}</td>
 				<td class="tData">${event.host.firstName}</td>
 				<c:choose>
 					<c:when test="${currentUser.id == event.host.id}">
-					<td><a class="tLink" href="/${event.id}/delete">Delete</a> | <a class="tLink" href="/${event.id}/edit">Edit</a></td>
+					<td><a class="tLink" href="/events/${event.id}/delete">Delete</a> | <a class="tLink" href="/events/${event.id}/edit">Edit</a></td>
 					</c:when>	
 					<c:otherwise>
 					<c:choose>
 						<c:when test="${event.usersAttending.contains(currentUser)}">
-						<td><a class="tLink" href="/unJoinEvent/${event.id}">UnJoin</a></td>
+						<td><a class="tLink" href="events/${event.id}/unjoin">UnJoin</a></td>
 						</c:when>
 						<c:otherwise>
-						<td><a class="tLink" href="/joinEvent/${event.id}">Join</a></td>
+						<td><a class="tLink" href="/events/${event.id}/join">Join</a></td>
 						</c:otherwise>
 					</c:choose>
 					</c:otherwise>		
@@ -95,7 +95,7 @@
 		</div>
 		<div id="eventForm">
 			<h2 class="subHead">Create An Event</h2>
-			<form:form id="inputForm" action="/add" method="post" modelAttribute="event">
+			<form:form id="inputForm" action="/events/new" method="post" modelAttribute="event">
 		        <form:hidden value="${currentUser.id}" path="host"/>
 		        <form:errors class="validation" path="eventName"/>
 			<div class="formGroup">

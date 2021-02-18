@@ -44,9 +44,9 @@ public class EventService {
 	public Event getByName(String eventName) {
 		return this.eRepo.findByEventNameContaining(eventName);
 	}
-//	public List<User> getUsersAttending(){
-//		return this.getUsersAttending();
-//	}
+	public List<User> getUsersAttending(){
+		return this.getUsersAttending();
+	}
 	public void joinEvent(Event event, User user) {
 		List<User> usersAttending = event.getUsersAttending();
 		usersAttending.add(user);

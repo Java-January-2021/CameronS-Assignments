@@ -3,6 +3,7 @@ package com.cameronsmith.eventsbeltreviewer.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -53,10 +54,10 @@ public class Event {
 	private String eventState;
 	@NotNull(message="Date Required")
 	@Future(message="You Cannot Time Travel.")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date eventDate;
 	
-	@OneToMany(mappedBy="event", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="event",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Message> eventMessages;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
