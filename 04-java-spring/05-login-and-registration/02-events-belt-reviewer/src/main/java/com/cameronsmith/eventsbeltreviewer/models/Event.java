@@ -61,7 +61,7 @@ public class Event {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
-    private User user;
+    private User host;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -129,11 +129,11 @@ public class Event {
 	public void setEventMessages(List<Message> eventMessages) {
 		this.eventMessages = eventMessages;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setHost(User user) {
+		this.host = user;
 	}
-	public User getUser() {
-		return this.user;
+	public User getHost() {
+		return this.host;
 	}
 	public List<User> getUsersAttending() {
 		return this.usersAttending;

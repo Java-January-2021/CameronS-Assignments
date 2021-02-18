@@ -14,7 +14,7 @@
 	<a id="wallLink" href="/wall">All Events</a>
 		<h1 id="head">${event.eventName}</h1>
 		<div id="infoDiv">
-		<h3 class="displaySubHead">Host:<span class="displayInfo"> ${event.user.firstName}</span></h3>
+		<h3 class="displaySubHead">Host:<span class="displayInfo"> ${event.host.firstName}</span></h3>
 		<h3 class="displaySubHead">Date:<span class="displayInfo"> ${event.eventDate}</span></h3>
 		<h3 class="displaySubHead">Location:<span class="displayInfo"> ${event.eventLocation}</span></h3>
 		<h2 class="displaySubHead">Attendees:<span id="displayCount"> ${aCount}</span></h2>
@@ -30,18 +30,24 @@
 		</table>
 		</div>
 		<div id="messageDiv">
-		<c:forEach items="${eventMessages}" var="m">
+		<c:forEach items="${messages}" var="m">
 		 <p id="mDisplay">${m.user.firstName}: ${m.messageContent}</p>
 		</c:forEach>
 		</div>
 		<div id="addMessage">
 		<h4 id="mInputHead">Add A Message:</h4>
-		<form:form method="post" action="/addMessage/${event.id}" modelAttribute="message">
-		<form:hidden value="${event.id}" path="event"/>
-		<form:hidden value="${currentUser.id}" path="user"/>
-		<form:input class="messInput" path="messageContent"/>
-		<input id="button" type="submit" value="Submit"/>
-		</form:form>
+<%-- 		<form:form method="post" action="/addMessage/${event.id}" modelAttribute="message"> --%>
+<%-- 		<form:hidden value="${event.id}" path="event"/> --%>
+<%-- 		<form:hidden value="${currentUser.id}" path="user"/> --%>
+<%-- 		<form:input class="messInput" path="messageContent"/> --%>
+<!-- 		<input id="button" type="submit" value="Submit"/> -->
+<%-- 		</form:form> --%>
+			<form action="/addMessage/${event.id}" method="post">
+			<input type="hidden" value="${event.id}" name="event"/>
+			<input type="hidden"value="${currentUser.id}" name="host"/>
+			<input type="text" class="messInput" name="messageContent"/>
+			<input id="button" type="submit" value="Submit"/>
+			</form>
 		</div>
 	</div>
 </body>

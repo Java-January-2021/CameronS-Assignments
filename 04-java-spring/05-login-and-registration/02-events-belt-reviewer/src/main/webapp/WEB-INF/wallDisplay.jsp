@@ -31,9 +31,9 @@
 				<td class="tData"><a id="iLink" href="/${event.id}/info">${event.eventName}</a></td>
 				<td class="tData">${event.eventDate}</td>
 				<td class="tData">${event.eventLocation}</td>
-				<td class="tData">${event.user.firstName}</td>
+				<td class="tData">${event.host.firstName}</td>
 				<c:choose>
-					<c:when test="${currentUser.id == event.user.id}">
+					<c:when test="${currentUser.id == event.host.id}">
 						<td><a class="tLink" href="/${event.id}/delete">Delete</a> | <a class="tLink" href="/${event.id}/edit">Edit</a></td>
 					</c:when>	
 					<c:otherwise>
@@ -72,9 +72,9 @@
 				<td class="tData">${event.eventDate}</td>
 				<td class="tData">${event.eventLocation}</td>
 				<td class="tData">${event.eventState}</td>
-				<td class="tData">${event.user.firstName}</td>
+				<td class="tData">${event.host.firstName}</td>
 				<c:choose>
-					<c:when test="${currentUser.id == event.user.id}">
+					<c:when test="${currentUser.id == event.host.id}">
 					<td><a class="tLink" href="/${event.id}/delete">Delete</a> | <a class="tLink" href="/${event.id}/edit">Edit</a></td>
 					</c:when>	
 					<c:otherwise>
@@ -96,7 +96,7 @@
 		<div id="eventForm">
 			<h2 class="subHead">Create An Event</h2>
 			<form:form id="inputForm" action="/add" method="post" modelAttribute="event">
-		        <form:hidden value="${currentUser.id}" path="user"/>
+		        <form:hidden value="${currentUser.id}" path="host"/>
 		        <form:errors class="validation" path="eventName"/>
 			<div class="formGroup">
 		        <form:label class="formLabel" path="eventName">Name:</form:label>
