@@ -60,8 +60,6 @@
 }
 #mDisplay{
 	background: white;
-/* 	overflow:auto; */
-/* 	text-overflow: inherit; */
 	padding: 5px;
 	margin: 10px 0px;
 }
@@ -73,7 +71,6 @@
 }
 .messInput{
 	width: 300px;
-/* 	text-overflow: inherit; */
 }
 #mInputHead{
 	margin-top: 0px;
