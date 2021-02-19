@@ -86,7 +86,7 @@ public class MasterController {
 			return "newProduct.jsp";
 		}
 		this.mService.createProduct(product);
-		return "redirect:/products/new";
+		return "redirect:/products/show";
 	}
 	@GetMapping("/categories/new")
 	public String newCategories(@ModelAttribute("category")Category category) {
@@ -98,7 +98,7 @@ public class MasterController {
 			return "newCategory.jsp";
 		}
 		this.mService.createCategory(category);
-		return "redirect:/categories/new";
+		return "redirect:/categories/show";
 	}
 	@GetMapping("/product/{id}/delete")
 	public String deleteProduct(@PathVariable("id")Long id) {

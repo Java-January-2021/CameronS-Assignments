@@ -38,7 +38,6 @@ public class MainController {
 	}
 	@GetMapping("/questions/new")
 	public String newQuestion() {
-		
 		return "newQuestion.jsp";
 	}
 	@PostMapping("/questions/new")
@@ -52,7 +51,7 @@ public class MainController {
 		else if(tagsInput.equals("")) {
 			errors.add("Tags cannot be blank.");
 		}
-		else if(tagsInput.indexOf(",")> 2) {
+		else if(tagsInput.indexOf(",")> 3) {
 			errors.add("Cannot input more than 3 tags.");
 		}
 		if(errors.size() > 0) {

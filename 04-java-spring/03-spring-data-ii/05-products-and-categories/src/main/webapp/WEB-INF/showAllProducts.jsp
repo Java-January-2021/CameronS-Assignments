@@ -28,7 +28,7 @@
 			<tr>
 				<td><a class="link" href="/product/${product.id}">${product.name}</a></td>
 				<td>${product.description}</td>
-				<td>${product.price}</td>
+				<td>$${product.price}</td>
 				<td><a class="link" href="/product/${product.id}/delete">Delete</a></td>
 			</tr>
 			</c:forEach>
