@@ -3,6 +3,7 @@ package com.cameronsmith.dojooverflow.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,7 +42,7 @@ public class Question {
 	
 	
 	private String question;
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
         name = "questions_tags", 
         joinColumns = @JoinColumn(name = "question_id"), 
@@ -49,7 +50,7 @@ public class Question {
     )
 	
     private List<Tag> tags;
-	@OneToMany(mappedBy="question", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="question",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Answer> answers;
 	//Constructors >>>>>>>>>>>>>>>>>>
 	public Question() {

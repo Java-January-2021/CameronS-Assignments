@@ -16,24 +16,23 @@
 		<table id="questionDisplay">
 		<thead>
 			<tr>
+				<th class="tableHead">Actions</th>
 				<th class="tableHead">Question</th>
 				<th class="tableHead">Tags</th>
-<!-- 				<th class="tableHead">Actions</th> -->
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${allQuestions}" var="question">
 			<tr>
+				<td><a class="tableLink" href="/${question.id}/delete">Delete</a>
 				<td class="questionTd"><a id="infoLink" href="/question/${question.id}">${question.question}</a></td>
 				<c:forEach items="${question.tags}" var="tag">
 					<td class="tagTd">${tag.subject}</td>
 				</c:forEach>
-<!-- 				<td><a class="tableLink" href="">Delete</a> | <a class="tableLink" href="">Update</a></td> -->
 			</tr>
 			</c:forEach>
 		</tbody>
 		</table>
-<!-- 		<a class="indexLink" href="/questions/new">Ask a Question</a> -->
 	</div>
 </body>
 </html>

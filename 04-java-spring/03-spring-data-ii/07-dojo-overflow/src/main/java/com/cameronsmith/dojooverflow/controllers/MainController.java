@@ -45,13 +45,14 @@ public class MainController {
 		//Validations NotEmpty,  max=3 tags, 
 		//Need Validations for comma separated and lower case
 		ArrayList<String> errors = new ArrayList<String>();
+		ArrayList<Tag>tagsOutput = this.mService.splitTagString(tagsInput.toLowerCase());
 		if(questionInput.equals("")) {
 			errors.add("Question cannot be blank.");
 		}
 		else if(tagsInput.equals("")) {
 			errors.add("Tags cannot be blank.");
 		}
-		else if(tagsInput.indexOf(",")> 3) {
+		else if(tagsOutput.size()> 3) {
 			errors.add("Cannot input more than 3 tags.");
 		}
 		if(errors.size() > 0) {
@@ -61,10 +62,10 @@ public class MainController {
 			return "redirect:/questions/new";
 		}
 		//take tagsInput and split into single strings and add to ArrayList
-		ArrayList<Tag>tagsOutput = this.mService.splitTagString(tagsInput.toLowerCase());
+		ArrayList<Tag>tagsOutput1 = this.mService.splitTagString(tagsInput.toLowerCase());
 		//System.out.println(tagsOutput);
 		//Create Question object with private tag list
-		this.mService.createQuestion(questionInput, tagsOutput);
+		this.mService.createQuestion(questionInput, tagsOutput1);
 		return "redirect:/dashboard";
 	}
 	@GetMapping("/question/{id}")
@@ -83,9 +84,13 @@ public class MainController {
 		}
 		Answer newAnswer = answerInput;
 		this.mService.createAnswer(newAnswer.getAnswer(), thisQuestion);
-		System.out.println(newAnswer);
 		//this.mService.addAnswerToQuestion(answerInput, thisQuestion);
 		return "redirect:/question/{id}";
+	}
+	@GetMapping("/{id}/delete")
+	public String deleteObject(@PathVariable("id")Long id) {
+		mService.deleteQuestionById(id);
+		return "redirect:/dashboard";
 	}
 	
 }
