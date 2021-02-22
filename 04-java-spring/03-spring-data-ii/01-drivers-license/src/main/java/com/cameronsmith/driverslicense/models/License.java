@@ -27,7 +27,7 @@ public class License {
 	private Date createdAt;
 	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
 	private Date updatedAt;
-//	@DateTimeFormat(pattern ="yyyy-MM-dd")
+	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	private Date expirationDate;
 	private String state;
 	@PrePersist

@@ -53,8 +53,9 @@ public class MainController {
 		if (result.hasErrors()) {
             return "newLicense.jsp";
         }
-		this.lService.createLicense(license);
-		return "redirect:/license/new";
+		License newL = this.lService.createLicense(license);
+		Long newLPersonId = newL.getPerson().getId();
+		return "redirect:/person/"+newLPersonId;
 	}
 	@GetMapping("/person/{id}")
 	public String showInfo( @PathVariable("id")Long id, Model viewModel) {
@@ -69,9 +70,8 @@ public class MainController {
 			viewModel.addAttribute("license", license);
 			viewModel.addAttribute("expDate", dateInput);
 			return "showInfo.jsp";
-		}else {
-			viewModel.addAttribute("person", person);
-			return "showInfo.jsp";
 		}
+		viewModel.addAttribute("person", person);
+		return "showInfo.jsp";
 	}
 }

@@ -16,7 +16,7 @@ public class LicenseService {
 	public List<License> getAll(){
 		return this.lRepo.findAll();
 	}
-	public License createLicense(License newEntry) {
+	public License createLicense(License newEntry) { 
 		return this.lRepo.save(newEntry);
 	}
 	public License getById(Long id) {
@@ -28,5 +28,9 @@ public class LicenseService {
 	public void deleteById(Long id) {
 		this.lRepo.deleteById(id);
 	}
-
+	public Long generateLicenseNum() {
+		Long count = null;
+		
+		return  count;
+	}
 }

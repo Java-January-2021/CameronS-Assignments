@@ -25,6 +25,11 @@ h1{
 	color: yellow;
 	margin: 0px 0px 0px 150px;
 }
+#indexLink{
+	display: inline-block;
+	color: yellow;
+	margin: 0px 0px 0px 0px;
+}
 #displayDiv{
 	display: inline-block;
 	margin: 30px 0px 0px 424.1px;

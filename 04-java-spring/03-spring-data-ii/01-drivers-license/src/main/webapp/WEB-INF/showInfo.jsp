@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id=wrapper>
-	 	<a id="addPersonLink" href="/person/new">Add Person</a>
+	 	<a id="addPersonLink" href="/person/new">Add Person</a> | <a id="indexLink" href="/" >Start Over</a>
 		<h1>${person.firstName} ${person.lastName}</h1>
 		<div id="displayDiv">
 		<c:choose>
