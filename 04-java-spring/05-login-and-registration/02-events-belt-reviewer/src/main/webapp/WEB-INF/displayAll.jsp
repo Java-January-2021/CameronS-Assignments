@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 			<c:forEach items="${inStateEvents}" var="event">
 				<tr>
 				<td class="tData"><a id="iLink" href="/events/${event.id}">${event.eventName}</a></td>
-				<td class="tData">${event.eventDate}</td>
+				<td class="tData"><fmt:formatDate pattern = "yyyy-MM-dd" value = "${event.eventDate}"/></td>
 				<td class="tData">${event.eventLocation}</td>
 				<td class="tData">${event.host.firstName}</td>
 				<c:choose>
@@ -69,7 +70,7 @@
 			<c:forEach items="${otherStateEvents}" var="event">
 				<tr>
 				<td><a id="iLink" href="/events/${event.id}">${event.eventName}</a></td>
-				<td class="tData">${event.eventDate}</td>
+				<td class="tData"><fmt:formatDate pattern = "yyyy-MM-dd" value = "${event.eventDate}"/></td>
 				<td class="tData">${event.eventLocation}</td>
 				<td class="tData">${event.eventState}</td>
 				<td class="tData">${event.host.firstName}</td>
