@@ -13,6 +13,11 @@
 	<div id=wrapper>
 	<a id="addPersonLink" href="/person/new">Add Person</a>
 		<h1>New License</h1>
+		<c:forEach items="${errors}" var="err">
+		<hr>
+		<h4 class="validation">${err}</h4>
+		<hr>
+		</c:forEach>
 		<div id="inputDiv">
 			<form:form id="inputForm" action="/license/add" method="post" modelAttribute="license">
 				<div class="formDiv">

@@ -1,6 +1,7 @@
 package com.cameronsmith.driverslicense.controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cameronsmith.driverslicense.models.License;
 import com.cameronsmith.driverslicense.models.Person;
@@ -49,13 +51,30 @@ public class MainController {
 		return "newLicense.jsp";
 	}
 	@PostMapping("/license/add")
-	public String createObject(@Valid @ModelAttribute("license")License license, BindingResult result) {
+	public String createObject(@Valid @ModelAttribute("license")License license, BindingResult result, RedirectAttributes redirectAttr, Model viewModel) {
 		if (result.hasErrors()) {
             return "newLicense.jsp";
         }
+		ArrayList<String> errors = new ArrayList<String>();
+		List<License> allLicense = lService.getAll();
+		for(License l: allLicense) {
+			if(license.getPerson().equals(l.getPerson())) {
+				errors.add("That person already has a license!");
+			}
+		}
+		if(errors.size() > 0) {
+			for(String e: errors){
+				List<Person> allPeople = pService.getAll();
+				viewModel.addAttribute("allPeople", allPeople);
+				viewModel.addAttribute("errors", errors);
+				redirectAttr.addFlashAttribute("errors", e);
+				return "newLicense.jsp";
+			}
+		}
 		License newL = this.lService.createLicense(license);
 		Long newLPersonId = newL.getPerson().getId();
 		return "redirect:/person/"+newLPersonId;
+		
 	}
 	@GetMapping("/person/{id}")
 	public String showInfo( @PathVariable("id")Long id, Model viewModel) {
