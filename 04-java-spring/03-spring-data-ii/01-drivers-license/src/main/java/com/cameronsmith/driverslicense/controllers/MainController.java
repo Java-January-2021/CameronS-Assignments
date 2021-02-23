@@ -53,6 +53,8 @@ public class MainController {
 	@PostMapping("/license/add")
 	public String createObject(@Valid @ModelAttribute("license")License license, BindingResult result, RedirectAttributes redirectAttr, Model viewModel) {
 		if (result.hasErrors()) {
+			List<Person> allPeople = pService.getAll();
+			viewModel.addAttribute("allPeople", allPeople);
             return "newLicense.jsp";
         }
 		ArrayList<String> errors = new ArrayList<String>();

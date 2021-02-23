@@ -24,7 +24,11 @@
 					<form:label class="formLabel" path="person">Person:</form:label>
 					<form:select class="formInput" path="person">
 						<c:forEach items="${allPeople}" var="person">
+							<c:choose>
+							<c:when test="${person.license ==null }">
 							<form:option value="${person.id}">${person.firstName} ${person.lastName}</form:option>
+							</c:when>
+							</c:choose>
 						</c:forEach>
 					</form:select>
 					<form:errors class="validation" path="person"></form:errors>
