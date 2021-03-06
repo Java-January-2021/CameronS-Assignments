@@ -47,11 +47,14 @@ public class Event {
 	@NotBlank(message="Name Required")
 	@Size(min=2, max=255, message="Must be 2-255 characters")
 	private String eventName;
+	
 	@NotBlank(message="Location Required")
 	@Size(min=2, max=255, message="Must be 2-255 characters")
 	private String eventLocation;
+	
 	@NotBlank
 	private String eventState;
+	
 	@NotNull(message="Date Required")
 	@Future(message="You Cannot Time Travel.")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
