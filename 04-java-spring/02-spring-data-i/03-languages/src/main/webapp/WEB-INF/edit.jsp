@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<div id=wrapper>
+	<div id = wrapper>
 		<h1><c:out value="${lang.name}"/></h1>
 		<a id="pageLink" href="/languages">Go Back</a>
 		<form:form id="inputForm" action="/languages/${lang.id}/edit" method="post" modelAttribute="language">

@@ -12,10 +12,11 @@ import com.cameronsmith.languages.repositories.LanguageRepo;
 public class LanguageService {
 	@Autowired
 	private LanguageRepo lRepo;
+	
 	public List<Language> getAllLanguages(){
 		return this.lRepo.findAll();
 	}
-	public Language createLang(Language newLang) {
+	public Language create(Language newLang) {
 		return this.lRepo.save(newLang);
 	}
 	public Language createLang(String name, String creator, String version) {

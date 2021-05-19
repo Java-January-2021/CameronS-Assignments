@@ -19,20 +19,21 @@ import com.cameronsmith.languages.services.LanguageService;
 public class MainController {
 	@Autowired
 	private LanguageService lService;
+	
 	@GetMapping("/languages")
 	public String index(@ModelAttribute("language")Language lang, Model viewModel) {
 		List<Language> langList = lService.getAllLanguages();
 		viewModel.addAttribute("langList",langList);
 		return "index.jsp";
 	}
-	@PostMapping("/languages/addEntry")
+	@PostMapping("/languages")
     public String createBook(Model viewModel, @Valid @ModelAttribute("language")Language lang, BindingResult result) {
     		if (result.hasErrors()) {
     			List<Language> langList = lService.getAllLanguages();
     			viewModel.addAttribute("langList",langList);
             return "index.jsp";
         } 
-        this.lService.createLang(lang);
+        this.lService.create(lang);
         return "redirect:/languages";
     }
 	@GetMapping("/languages/{id}")

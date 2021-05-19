@@ -32,7 +32,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<form:form id="inputForm" action="/languages/addEntry" method="post" modelAttribute="language">
+	<form:form id="inputForm" action="/languages" method="post" modelAttribute="language">
 		<p>
 	        <form:label class="formLabel" path="name">Name:</form:label>
 	        <form:input class="formInput" path="name"/>

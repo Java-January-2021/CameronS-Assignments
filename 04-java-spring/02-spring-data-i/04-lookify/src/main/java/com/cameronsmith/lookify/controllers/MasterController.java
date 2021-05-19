@@ -21,6 +21,7 @@ import com.cameronsmith.lookify.services.SongService;
 public class MasterController {
 	@Autowired
 	private SongService sService;
+	
 	@GetMapping("/")
 	public String welcome() {
 		return "index.jsp";
