@@ -17,6 +17,7 @@ import javax.validation.constraints.Future;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
 @Entity 
 @Table(name="licenses")
 public class License {
