@@ -96,12 +96,12 @@
 		</div>
 		<div id="eventForm">
 			<h2 class="subHead">Create An Event</h2>
-			<form:form id="inputForm" action="/events/new" method="post" modelAttribute="event">
+			<form:form id="inputForm" action="/events/new" method="POST" modelAttribute="event">
 		        <form:hidden value="${currentUser.id}" path="host"/>
 		        <form:errors class="validation" path="eventName"/>
 			<div class="formGroup">
 		        <form:label class="formLabel" path="eventName">Name:</form:label>
-		        <form:input class="formInput" path="eventName"/>
+		        <form:input class="formInput"  path="eventName"/>
 		    </div>
 		        <form:errors class="validation" path="eventLocation"/>
 		    <div class="formGroup">

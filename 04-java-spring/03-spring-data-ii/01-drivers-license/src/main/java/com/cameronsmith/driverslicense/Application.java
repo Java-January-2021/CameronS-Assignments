@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 public class Application {
 
 	public static void main(String[] args) {
-		System.getProperties().put( "server.port", 8181 );
+		System.getProperties().put( "server.port", 8080 );
 		SpringApplication.run(Application.class, args);
 	}
 	@Bean

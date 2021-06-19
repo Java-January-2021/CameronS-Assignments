@@ -10,10 +10,17 @@
 </head>
 <body>
 	<div id=wrapper>
-		<h1>You have visited <c:out value="${count}"/> times.</h1>
-		<div id=divLink>
-			<a class=pageLink href="/">Go Back</a><p>|</p><a class=pageLink href="/twice">Go Back Twice</a><p>|</p><a class=pageLink href="/reset">Reset</a>
-		</div>
+	<c:choose>
+		<c:when test="${count == null}" >
+			<h2 class ="head">The count has been reset</h2>
+		</c:when>
+		<c:otherwise>
+			<h2 class ="head">You have visited <c:out value="${count}"/> times.</h2>
+		</c:otherwise>
+	</c:choose>
+	<div id=divLink>
+		<a class=pageLink href="/">Visit Again</a><p>|</p><a class=pageLink href="/twice">Visit Twice</a><p>|</p><a class=pageLink href="/reset">Reset Count</a>
+	</div>
 	</div>
 </body>
 </html>

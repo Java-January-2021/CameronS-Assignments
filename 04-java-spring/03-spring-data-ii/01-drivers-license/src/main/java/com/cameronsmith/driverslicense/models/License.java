@@ -14,6 +14,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,6 +30,8 @@ public class License {
 	private Date createdAt;
 	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
 	private Date updatedAt;
+	@Column(nullable = false)
+	@NotNull(message="You may not time travel.")
 	@Future(message="You may not time travel.")
 	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	private Date expirationDate;

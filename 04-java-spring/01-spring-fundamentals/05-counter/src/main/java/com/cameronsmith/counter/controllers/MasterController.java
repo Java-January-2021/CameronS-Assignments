@@ -45,6 +45,6 @@ public class MasterController {
 		Integer count = (Integer) session.getAttribute("count");
 		count +=2;
 		setCount(session, count);
-		return "index2.jsp";
+		return "index.jsp";
 	}
 }

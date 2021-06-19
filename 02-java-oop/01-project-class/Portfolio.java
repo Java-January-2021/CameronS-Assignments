@@ -21,8 +21,8 @@ public class Portfolio {
         return costDisplay;
     }
     public String showPorfolio(){
-        for(Project i : this.Projects){
-            System.out.println("Project: "+i.elevatorPitch());
+        for(Project p : this.Projects){
+            System.out.println("Project: "+p.elevatorPitch());
         }
         return getPortfolioCost();
     }

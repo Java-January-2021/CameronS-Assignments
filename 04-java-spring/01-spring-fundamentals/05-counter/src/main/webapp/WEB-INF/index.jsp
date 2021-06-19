@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id=wrapper>
-		<h1>Welcome User!</h1>
+		<h1 class="head">Welcome User!</h1>
 		<a id=countLink href="/counter">Display Visit Count</a>
 	</div>
 </body>
