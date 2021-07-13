@@ -123,6 +123,17 @@ public class MasterController {
 		}
 		return "redirect:/events";
 	}
+	@PostMapping("/events/{id}/edit")
+	public String updateEvent(@Valid @ModelAttribute("event")Event eventInput, BindingResult result, @PathVariable("id")Long eventId, HttpSession session, Model viewModel) {
+		Event eventToEdit = this.eService.getEventById(eventId);
+		viewModel.addAttribute("event", eventToEdit);
+		if (result.hasErrors()) {
+			viewModel.addAttribute("event", eventToEdit);
+			return "edit.jsp";
+		}
+		this.eService.updateEntry(eventInput);
+		return "redirect:/events";
+	}
 //	@PostMapping("/events/{id}/edit")
 //	public String updateEvent(@RequestParam("host")User host, @RequestParam("eventName")String name, @RequestParam("eventLocation")String location, @RequestParam("eventDate")Date date,  @RequestParam("eventState")String state, @PathVariable("id")Long eventId, HttpSession session, Model viewModel) {
 //		Event eventToEdit = this.eService.getEventById(eventId);
@@ -135,17 +146,6 @@ public class MasterController {
 //		this.eService.updateEntry(eventToEdit);
 //		return "redirect:/events";
 //	}
-	@PostMapping("/events/{id}/edit")
-	public String updateEvent(@Valid @ModelAttribute("event")Event eventInput, BindingResult result, @PathVariable("id")Long eventId, HttpSession session, Model viewModel) {
-		Event eventToEdit = this.eService.getEventById(eventId);
-		viewModel.addAttribute("event", eventToEdit);
-		if (result.hasErrors()) {
-			viewModel.addAttribute("event", eventToEdit);
-			return "edit.jsp";
-		}
-		this.eService.updateEntry(eventInput);
-		return "redirect:/events";
-	}
 	@GetMapping("/events/{id}")
 	public String eventInfo(@PathVariable("id")Long id, Model viewModel, HttpSession session) {
 		Event thisEvent = this.eService.getEventById(id);

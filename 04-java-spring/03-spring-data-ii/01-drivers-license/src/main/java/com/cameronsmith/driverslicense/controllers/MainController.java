@@ -28,14 +28,17 @@ public class MainController {
 	private PersonService pService;
 	@Autowired
 	private LicenseService lService;
+	
 	@GetMapping("/")
 	public String index() {
 		return "index.jsp";
 	}
+	
 	@GetMapping("/person/new")
 	public String newPerson(@ModelAttribute("person")Person person) {
 		return "newPerson.jsp";
 	}
+	
 	@PostMapping("/person/add")
     public String createObject(@Valid @ModelAttribute("person")Person person, BindingResult result) {
 		if (result.hasErrors()) {
@@ -44,21 +47,23 @@ public class MainController {
         this.pService.createEntry(person);
         return "redirect:/person/new";
     }
+	
 	@GetMapping("/license/new")
 	public String newLicense(@ModelAttribute("license")License license, Model viewModel) {
 		List<Person> allPeople = pService.getAll();
 		viewModel.addAttribute("allPeople", allPeople);
 		return "newLicense.jsp";
 	}
+	
 	@PostMapping("/license/add")
 	public String createObject(@Valid @ModelAttribute("license")License license, BindingResult result, RedirectAttributes redirectAttr, Model viewModel) {
+		List<Person> allPeople = pService.getAll();
+		ArrayList<String> errors = new ArrayList<String>();
+		List<License> allLicense = lService.getAll();
 		if (result.hasErrors()) {
-			List<Person> allPeople = pService.getAll();
 			viewModel.addAttribute("allPeople", allPeople);
             return "newLicense.jsp";
         }
-		ArrayList<String> errors = new ArrayList<String>();
-		List<License> allLicense = lService.getAll();
 		for(License l: allLicense) {
 			if(license.getPerson().equals(l.getPerson())) {
 				errors.add("That person already has a license!");
@@ -66,7 +71,6 @@ public class MainController {
 		}
 		if(errors.size() > 0) {
 			for(String e: errors){
-				List<Person> allPeople = pService.getAll();
 				viewModel.addAttribute("allPeople", allPeople);
 				viewModel.addAttribute("errors", errors);
 				redirectAttr.addFlashAttribute("errors", e);
@@ -83,13 +87,8 @@ public class MainController {
 		Person person = pService.getById(id);
 		License license = person.getLicense();
 		if( license != null) {			
-			Date expdate = license.getExpirationDate();
-			String pattern = "yyyy-MM-dd";
-			SimpleDateFormat dateOnly = new SimpleDateFormat(pattern);
-			String dateInput = dateOnly.format(expdate);
 			viewModel.addAttribute("person", person);
 			viewModel.addAttribute("license", license);
-			viewModel.addAttribute("expDate", dateInput);
 			return "showInfo.jsp";
 		}
 		viewModel.addAttribute("person", person);

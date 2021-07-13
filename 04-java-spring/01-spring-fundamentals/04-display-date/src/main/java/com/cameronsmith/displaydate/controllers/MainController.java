@@ -26,6 +26,7 @@ public class MainController {
 	@RequestMapping(value="/time", method=RequestMethod.GET)
 	public String time(Model viewModel) {
 		Date date = new Date();
+		System.out.println(date);
 		String pattern = "h:mm a";
 		SimpleDateFormat timeOnly = new SimpleDateFormat(pattern);
 		String timeInput = timeOnly.format(date);

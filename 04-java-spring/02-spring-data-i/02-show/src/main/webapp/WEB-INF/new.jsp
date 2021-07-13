@@ -13,29 +13,29 @@
 	<div id=wrapper>
 		<h1>New Book</h1>
 		<form:form action="/addBooks" method="post" modelAttribute="book">
+		<form:errors path="title"/>
 		    <p>
 		        <form:label path="title">Title</form:label>
-		        <form:errors path="title"/>
 		        <form:input path="title"/>
 		    </p>
+		    <form:errors path="author"/>
 		    <p>
 		        <form:label path="author">Author</form:label>
-		        <form:errors path="author"/>
 		        <form:input path="author"/>
 		    </p>
+		    <form:errors path="description"/>
 		    <p>
 		        <form:label path="description">Description</form:label>
-		        <form:errors path="description"/>
 		        <form:textarea path="description"/>
 		    </p>
+		    <form:errors path="language"/>
 		    <p>
 		        <form:label path="language">Language</form:label>
-		        <form:errors path="language"/>
 		        <form:input path="language"/>
 		    </p>
+		    <form:errors path="numberOfPages"/>     
 		    <p>
 		        <form:label path="numberOfPages">Pages</form:label>
-		        <form:errors path="numberOfPages"/>     
 		        <form:input type="number" path="numberOfPages"/>
 		    </p>    
 		    <input id="button" type="submit" value="Submit"/>

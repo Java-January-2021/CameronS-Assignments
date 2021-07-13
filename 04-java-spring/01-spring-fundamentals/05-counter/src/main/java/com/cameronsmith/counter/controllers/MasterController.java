@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MasterController {
+	@SuppressWarnings("unused")
 	private Integer currentCount;
 	
 	public Integer getCount(HttpSession session){
@@ -31,8 +32,8 @@ public class MasterController {
 	
 	@RequestMapping(value="/counter", method=RequestMethod.GET)
 	public String count(HttpSession session, Model viewModel){
-		currentCount= (Integer) session.getAttribute("count");
-        viewModel.addAttribute("count", currentCount);
+		Integer currentCount = (Integer) session.getAttribute("count");
+		viewModel.addAttribute("count", currentCount);
         return "counter.jsp";
     }
 	@RequestMapping(value="/reset", method=RequestMethod.GET)

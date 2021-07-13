@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,12 @@ import com.cameronsmith.show.bookservices.BookService;
 public class BooksController {
 	@Autowired
 	private BookService bService;
+	
+	@GetMapping("/")
+	public String root() {
+		return "redirect:/books";
+	}
+	
 	@RequestMapping("/books")
     public String index(Model viewModel) {
         List<Book> books = bService.getAllBooks();
@@ -29,17 +36,21 @@ public class BooksController {
 	}
 	@RequestMapping("/books/{id}")
     public String findBookByIndex(Model viewModel, @PathVariable("id") Long id) {
+		System.out.println(id);
         Book book = bService.individualBook(id);
         viewModel.addAttribute("book", book);
         return "showBook.jsp";
     }
 	@RequestMapping("/books/new")
-    public String newBook(@ModelAttribute("book") Book book) {
+    public String newBook(@ModelAttribute("book")Book book) {
         return "new.jsp";
     }
     @RequestMapping(value="/addBooks", method=RequestMethod.POST)
     public String createBook(@Valid @ModelAttribute("book")Book book, BindingResult result) {
+    	//get user from session
+    	//set it to a user object
     		if (result.hasErrors()) {
+    			//viewmodel
             return "new.jsp";
         } 
         this.bService.createBook(book);
@@ -56,7 +67,7 @@ public class BooksController {
         }
     }
     @PostMapping("/edit/{id}")
-    public String updateBook(@PathVariable("id") Long id, Model viewmodel, @Valid @ModelAttribute("book") Book bookToUpdate, BindingResult result) {
+    public String updateBook(@Valid @ModelAttribute("book") Book bookToUpdate, BindingResult result,@PathVariable("id") Long id, Model viewmodel ) {
     	Book book = bService.individualBook(id);
         if (result.hasErrors()) {
         	viewmodel.addAttribute("book", book);

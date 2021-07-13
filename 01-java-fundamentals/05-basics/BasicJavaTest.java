@@ -31,4 +31,5 @@ public class BasicJavaTest {
         int[] shiftValArray = {1, 5, 10, 7, -2};
         System.out.println(Arrays.toString(basicMethods.shiftValues(shiftValArray)));
     }
+    
 }

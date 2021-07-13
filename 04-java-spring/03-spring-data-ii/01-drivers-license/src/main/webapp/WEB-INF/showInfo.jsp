@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
 			<h3 class="displayHead">License Number:</h3>
 			<p class="displayInfo">0000000<c:out value="${person.license.id}"/></p>
 			<h3 class="displayHead">Exp. Date:</h3>
-			<p class="displayInfo"><c:out value="${expDate}"/></p>
+			<p class="displayInfo"><fmt:formatDate pattern = "MM/dd/yyyy" value = "${license.expirationDate}"/></p>
 			<h3 class="displayHead">State:</h3>
 			<p class="displayInfo"><c:out value="${person.license.state}"/></p>
 			</c:when>

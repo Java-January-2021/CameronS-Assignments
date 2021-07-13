@@ -24,19 +24,19 @@ public class Book {
  @GeneratedValue(strategy = GenerationType.IDENTITY)
  private Long id;
  @Column
- @NotBlank
- @Size(min = 5, max = 200)
+ @NotBlank(message="Title Required")
+ @Size(min = 5, max = 200, message = "Title minimum of 5 characters.")
  private String title;
  @Column
- @NotBlank
- @Size(min = 5, max = 200)
+ @NotBlank(message="Desc Required")
+ @Size(min = 5, max = 200, message = "Desc minimum of 5 characters.")
  private String description;
  @Column
- @NotBlank
+ @NotBlank(message="Author Required")
  @Size(min = 3, max = 40)
  private String author;
  @Column
- @NotBlank
+ @NotBlank(message="Language Required")
  @Size(min = 3, max = 40)
  private String language;
  @Column

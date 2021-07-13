@@ -1,6 +1,6 @@
 public class FirstJavaProgram {
     public static void main(String[] args){
-        String name = "Cameron,";
+String name = "Cameron,";
         String namestring = "My name is ";
         String agestring1 = "I am ";
         String agestring2 = " years old.";
